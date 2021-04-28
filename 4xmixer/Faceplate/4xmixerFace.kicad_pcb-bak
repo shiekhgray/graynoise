@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 50)
+    (drawings 51)
     (tracks 0)
     (zones 0)
     (modules 11)
@@ -309,6 +309,7 @@
     (pad 1 np_thru_hole circle (at 0 0) (size 6 6) (drill 6) (layers *.Cu *.Mask))
   )
 
+  (gr_line (start 92.71 129.54) (end 91.44 129.54) (layer F.SilkS) (width 0.12))
   (gr_text Gray (at 92.6592 147.9804) (layer F.SilkS)
     (effects (font (size 2 2) (thickness 0.15)))
   )
@@ -364,7 +365,7 @@
   (gr_text 1 (at 80.645 43.18) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (gr_text OUT (at 90.805 129.159) (layer F.SilkS)
+  (gr_text OUT (at 89.842433 129.325509) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_text 4 (at 90.2335 114.173) (layer F.SilkS)
