@@ -86,7 +86,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "facegerbs/"))
+      (outputdirectory "offAttnFaceGerbs/"))
   )
 
   (net 0 "")
