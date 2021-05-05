@@ -10,4 +10,4 @@ A small, 4hp, 4 channel mono mixer for Eurorack in kicad
 A 4hp dual attenuverter with offset function, useful for sidechain compression, FM and AM intensity control, and other CV management
 
 ## Avalanche
-A 4hp? Dingus for making noise based off of reverse avalanche noise from applying too much voltage through a zener diode
+A 4hp? dingus for making white noise by running a zener diode in reverse avalanche mode
