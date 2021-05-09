@@ -1,0 +1,304 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:AudioJack2 J7
+U 1 1 60B075A1
+P 3150 2400
+F 0 "J7" H 3182 2725 50  0000 C CNN
+F 1 "CV1" H 3182 2634 50  0000 C CNN
+F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 3150 2400 50  0001 C CNN
+F 3 "~" H 3150 2400 50  0001 C CNN
+	1    3150 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Zener_Small D5
+U 1 1 60B07FAF
+P 3800 2500
+F 0 "D5" V 3754 2570 50  0000 L CNN
+F 1 "D_Zener_5v" V 3845 2570 50  0000 L CNN
+F 2 "Diode_SMD:D_SOT-23_ANK" V 3800 2500 50  0001 C CNN
+F 3 "~" V 3800 2500 50  0001 C CNN
+	1    3800 2500
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR032
+U 1 1 60B08B43
+P 3800 2150
+F 0 "#PWR032" H 3800 1900 50  0001 C CNN
+F 1 "GND" H 3805 1977 50  0000 C CNN
+F 2 "" H 3800 2150 50  0001 C CNN
+F 3 "" H 3800 2150 50  0001 C CNN
+	1    3800 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 2300 3550 2300
+Wire Wire Line
+	3550 2300 3550 2150
+Wire Wire Line
+	3550 2150 3800 2150
+$Comp
+L power:GND #PWR033
+U 1 1 60B09935
+P 3800 2700
+F 0 "#PWR033" H 3800 2450 50  0001 C CNN
+F 1 "GND" H 3805 2527 50  0000 C CNN
+F 2 "" H 3800 2700 50  0001 C CNN
+F 3 "" H 3800 2700 50  0001 C CNN
+	1    3800 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 2700 3800 2600
+$Comp
+L Device:R_Small R13
+U 1 1 60B0A1B0
+P 3550 2400
+F 0 "R13" V 3750 2400 50  0000 C CNN
+F 1 "100K" V 3650 2400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" H 3550 2400 50  0001 C CNN
+F 3 "~" H 3550 2400 50  0001 C CNN
+	1    3550 2400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3450 2400 3350 2400
+Wire Wire Line
+	3650 2400 3800 2400
+Wire Wire Line
+	4500 2400 3800 2400
+Connection ~ 3800 2400
+Text GLabel 4500 2400 2    50   Output ~ 0
+CVA
+$Comp
+L Connector:AudioJack2 J8
+U 1 1 60B1876E
+P 3150 3250
+F 0 "J8" H 3182 3575 50  0000 C CNN
+F 1 "CV2" H 3182 3484 50  0000 C CNN
+F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 3150 3250 50  0001 C CNN
+F 3 "~" H 3150 3250 50  0001 C CNN
+	1    3150 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Zener_Small D6
+U 1 1 60B18774
+P 3800 3350
+F 0 "D6" V 3754 3420 50  0000 L CNN
+F 1 "D_Zener_5v" V 3845 3420 50  0000 L CNN
+F 2 "Diode_SMD:D_SOT-23_ANK" V 3800 3350 50  0001 C CNN
+F 3 "~" V 3800 3350 50  0001 C CNN
+	1    3800 3350
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR034
+U 1 1 60B1877A
+P 3800 3000
+F 0 "#PWR034" H 3800 2750 50  0001 C CNN
+F 1 "GND" H 3805 2827 50  0000 C CNN
+F 2 "" H 3800 3000 50  0001 C CNN
+F 3 "" H 3800 3000 50  0001 C CNN
+	1    3800 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 3150 3550 3150
+Wire Wire Line
+	3550 3150 3550 3000
+Wire Wire Line
+	3550 3000 3800 3000
+$Comp
+L power:GND #PWR035
+U 1 1 60B18783
+P 3800 3550
+F 0 "#PWR035" H 3800 3300 50  0001 C CNN
+F 1 "GND" H 3805 3377 50  0000 C CNN
+F 2 "" H 3800 3550 50  0001 C CNN
+F 3 "" H 3800 3550 50  0001 C CNN
+	1    3800 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 3550 3800 3450
+$Comp
+L Device:R_Small R14
+U 1 1 60B1878A
+P 3550 3250
+F 0 "R14" V 3750 3250 50  0000 C CNN
+F 1 "100K" V 3650 3250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" H 3550 3250 50  0001 C CNN
+F 3 "~" H 3550 3250 50  0001 C CNN
+	1    3550 3250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3450 3250 3350 3250
+Wire Wire Line
+	3650 3250 3800 3250
+Wire Wire Line
+	4500 3250 3800 3250
+Connection ~ 3800 3250
+Text GLabel 4500 3250 2    50   Output ~ 0
+CVB
+$Comp
+L Connector:AudioJack2 J9
+U 1 1 60B1A13B
+P 3150 4100
+F 0 "J9" H 3182 4425 50  0000 C CNN
+F 1 "CV3" H 3182 4334 50  0000 C CNN
+F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 3150 4100 50  0001 C CNN
+F 3 "~" H 3150 4100 50  0001 C CNN
+	1    3150 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Zener_Small D7
+U 1 1 60B1A141
+P 3800 4200
+F 0 "D7" V 3754 4270 50  0000 L CNN
+F 1 "D_Zener_5v" V 3845 4270 50  0000 L CNN
+F 2 "Diode_SMD:D_SOT-23_ANK" V 3800 4200 50  0001 C CNN
+F 3 "~" V 3800 4200 50  0001 C CNN
+	1    3800 4200
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR036
+U 1 1 60B1A147
+P 3800 3850
+F 0 "#PWR036" H 3800 3600 50  0001 C CNN
+F 1 "GND" H 3805 3677 50  0000 C CNN
+F 2 "" H 3800 3850 50  0001 C CNN
+F 3 "" H 3800 3850 50  0001 C CNN
+	1    3800 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 4000 3550 4000
+Wire Wire Line
+	3550 4000 3550 3850
+Wire Wire Line
+	3550 3850 3800 3850
+$Comp
+L power:GND #PWR037
+U 1 1 60B1A150
+P 3800 4400
+F 0 "#PWR037" H 3800 4150 50  0001 C CNN
+F 1 "GND" H 3805 4227 50  0000 C CNN
+F 2 "" H 3800 4400 50  0001 C CNN
+F 3 "" H 3800 4400 50  0001 C CNN
+	1    3800 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 4400 3800 4300
+$Comp
+L Device:R_Small R15
+U 1 1 60B1A157
+P 3550 4100
+F 0 "R15" V 3750 4100 50  0000 C CNN
+F 1 "100K" V 3650 4100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" H 3550 4100 50  0001 C CNN
+F 3 "~" H 3550 4100 50  0001 C CNN
+	1    3550 4100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3450 4100 3350 4100
+Wire Wire Line
+	3650 4100 3800 4100
+Wire Wire Line
+	4500 4100 3800 4100
+Connection ~ 3800 4100
+Text GLabel 4500 4100 2    50   Output ~ 0
+CVC
+$Comp
+L Connector:AudioJack2 J10
+U 1 1 60B1C70C
+P 3150 4950
+F 0 "J10" H 3182 5275 50  0000 C CNN
+F 1 "CV4" H 3182 5184 50  0000 C CNN
+F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 3150 4950 50  0001 C CNN
+F 3 "~" H 3150 4950 50  0001 C CNN
+	1    3150 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Zener_Small D8
+U 1 1 60B1C712
+P 3800 5050
+F 0 "D8" V 3754 5120 50  0000 L CNN
+F 1 "D_Zener_5v" V 3845 5120 50  0000 L CNN
+F 2 "Diode_SMD:D_SOT-23_ANK" V 3800 5050 50  0001 C CNN
+F 3 "~" V 3800 5050 50  0001 C CNN
+	1    3800 5050
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR038
+U 1 1 60B1C718
+P 3800 4700
+F 0 "#PWR038" H 3800 4450 50  0001 C CNN
+F 1 "GND" H 3805 4527 50  0000 C CNN
+F 2 "" H 3800 4700 50  0001 C CNN
+F 3 "" H 3800 4700 50  0001 C CNN
+	1    3800 4700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 4850 3550 4850
+Wire Wire Line
+	3550 4850 3550 4700
+Wire Wire Line
+	3550 4700 3800 4700
+$Comp
+L power:GND #PWR039
+U 1 1 60B1C721
+P 3800 5250
+F 0 "#PWR039" H 3800 5000 50  0001 C CNN
+F 1 "GND" H 3805 5077 50  0000 C CNN
+F 2 "" H 3800 5250 50  0001 C CNN
+F 3 "" H 3800 5250 50  0001 C CNN
+	1    3800 5250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 5250 3800 5150
+$Comp
+L Device:R_Small R16
+U 1 1 60B1C728
+P 3550 4950
+F 0 "R16" V 3750 4950 50  0000 C CNN
+F 1 "100K" V 3650 4950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" H 3550 4950 50  0001 C CNN
+F 3 "~" H 3550 4950 50  0001 C CNN
+	1    3550 4950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3450 4950 3350 4950
+Wire Wire Line
+	3650 4950 3800 4950
+Wire Wire Line
+	4500 4950 3800 4950
+Connection ~ 3800 4950
+Text GLabel 4500 4950 2    50   Output ~ 0
+CVD
+$EndSCHEMATC
