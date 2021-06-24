@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 38)
+    (drawings 36)
     (tracks 0)
     (zones 0)
     (modules 11)
@@ -1118,6 +1118,8 @@
     (pad 1 np_thru_hole circle (at 0 0) (size 3.2 3.2) (drill 3.2) (layers *.Cu *.Mask))
   )
 
+  (gr_line (start 45.72 34.29) (end 45.72 33.57) (layer Edge.Cuts) (width 0.05) (tstamp 60D44427))
+  (gr_line (start 25.4 34.29) (end 25.4 33.57) (layer Edge.Cuts) (width 0.05))
   (gr_text Attenuverters (at 40.9 37.2) (layer F.SilkS)
     (effects (font (size 0.9 0.9) (thickness 0.15)))
   )
@@ -1141,11 +1143,7 @@
   (gr_line (start 45.72 162.052) (end 45.72 162.0774) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 45.72 161.29) (end 45.72 162.052) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 25.4 161.29) (end 25.4 162.052) (layer Edge.Cuts) (width 0.05))
-  (gr_line (start 25.38 33.5726) (end 45.7 33.5726) (layer Edge.Cuts) (width 0.05) (tstamp 60D3E0F1))
-  (gr_line (start 25.38 33.598) (end 25.38 33.5726) (layer Edge.Cuts) (width 0.05))
-  (gr_line (start 45.7 33.598) (end 45.7 33.5726) (layer Edge.Cuts) (width 0.05))
-  (gr_line (start 45.72 34.29) (end 45.72 33.528) (layer Edge.Cuts) (width 0.05))
-  (gr_line (start 25.4 34.29) (end 25.4 33.528) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 25.4 33.57) (end 45.72 33.57) (layer Edge.Cuts) (width 0.05) (tstamp 60D3E0F1))
   (gr_text OUT (at 40.64 137.9855) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
