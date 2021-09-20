@@ -1396,4 +1396,54 @@ Wire Wire Line
 	4550 4350 4650 4350
 Wire Wire Line
 	4550 4250 4650 4250
+$Comp
+L Device:R_Small_US R?
+U 1 1 61B1FA80
+P 4400 3650
+F 0 "R?" V 4195 3650 50  0000 C CNN
+F 1 "100K" V 4286 3650 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 4400 3650 50  0001 C CNN
+F 3 "~" H 4400 3650 50  0001 C CNN
+	1    4400 3650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 61B20B5F
+P 4400 3850
+F 0 "R?" V 4195 3850 50  0000 C CNN
+F 1 "100K" V 4286 3850 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 4400 3850 50  0001 C CNN
+F 3 "~" H 4400 3850 50  0001 C CNN
+	1    4400 3850
+	0    1    1    0   
+$EndComp
+Text GLabel 4650 3650 2    50   Input ~ 0
+SDA
+Text GLabel 4650 3850 2    50   Input ~ 0
+SCL
+$Comp
+L power:+5V #PWR?
+U 1 1 61B236AE
+P 4050 3750
+F 0 "#PWR?" H 4050 3600 50  0001 C CNN
+F 1 "+5V" V 4065 3878 50  0000 L CNN
+F 2 "" H 4050 3750 50  0001 C CNN
+F 3 "" H 4050 3750 50  0001 C CNN
+	1    4050 3750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4050 3750 4050 3650
+Wire Wire Line
+	4050 3650 4300 3650
+Wire Wire Line
+	4300 3850 4050 3850
+Wire Wire Line
+	4050 3850 4050 3750
+Connection ~ 4050 3750
+Wire Wire Line
+	4500 3650 4650 3650
+Wire Wire Line
+	4500 3850 4650 3850
 $EndSCHEMATC
