@@ -30,6 +30,16 @@ int notes[60] = {
   3276, 3344, 3412, 3481, 3549, 3617, 3686, 3754, 3822, 3890, 3958, 4027
 };
 
+/*
+ * C, in theory.
+0, 136, 205, 341, 478, 614, 682,
+819, 956, 1024, 1160, 1297, 1433, 1502,
+1638, 1774, 1843, 1979, 2116, 2252, 2320,
+2457, 2594, 2662, 2798, 2935, 3071, 3140,
+3276, 3412, 3481, 3617, 3754, 3890, 3958
+ */
+
+/*
 int keyNotes[24][35] = {
   {0, 136, 205, 341, 478, 614, 682, 819, 956, 1024, 1160, 1297, 1433, 1502, 1638, 1774, 1843, 1979, 2116, 2252, 2320, 2457, 2594, 2662, 2798, 2935, 3071, 3140, 3276, 3412, 3481, 3617, 3754, 3890, 3958},
   {0, 68, 205, 341, 410, 546, 682, 819, 887, 1024, 1160, 1228, 1365, 1502, 1638, 1706, 1843, 1979, 2048, 2184, 2320, 2457, 2525, 2662, 2798, 2866, 3003, 3140, 3276, 3344, 3481, 3617, 3686, 3822, 3958},
@@ -56,6 +66,9 @@ int keyNotes[24][35] = {
   {751, 887, 956, 1092, 1228, 1365, 1433, 1570, 1706, 1774, 1911, 2048, 2184, 2252, 2389, 2525, 2594, 2730, 2866, 3003, 3071, 3208, 3344, 3412, 3549, 3686, 3822, 3890, 4027},
   {751, 819, 956, 1092, 1160, 1297, 1433, 1570, 1638, 1774, 1911, 1979, 2116, 2252, 2389, 2457, 2594, 2730, 2798, 2935, 3071, 3208, 3276, 3412, 3549, 3617, 3754, 3890, 4027, 4095}
 };
+*/
+
+int * keyNotes;
 
 char keyNames[24][9] {
   "Cmaj", "Cmin", "CsharpMaj", "CsharpMin",
@@ -107,7 +120,8 @@ void loop() {
   currentOctave = octaveSelect(octaveCV);
   
   //Generate Outputs
-  root = keyNotes[currentKeyPosition][(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
+  keyNotes = generateKey(currentKeyPosition, isMinor, stepDistance);
+  root = keyNotes[(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
   chord = generateChord(root, chord, isMinor);
 
 
@@ -250,4 +264,42 @@ int * generateChord(int root, int chordRequest, int isMinor) {
   }
 
   return chord;
+}
+
+//Given a desired key, and whether the key is minor or not, and the distance between notes:
+//Generate an array of values to send to the DAC that should be in the key
+int * generateKey(int keyNumber, int isMinor, float stepDistance) {
+  //Minor: whole, half, whole, whole, half, whole, whole
+  //Major: whole, whole, half, whole, whole, whole, half
+  static int key[35] = {};
+
+  //Find first note:
+  int root = round(keyNumber * stepDistance);
+  float octave = 0;
+  if (isMinor) {
+    //Minor
+    for (int i = 0; i < sizeof(key); i += 7) {
+      octave = (i / 7) * stepDistance * 12;
+      key[i] = octave;
+      key[i+1] = round(2*stepDistance) + octave;
+      key[i+2] = round(3*stepDistance) + octave;
+      key[i+3] = round(5*stepDistance) + octave;
+      key[i+4] = round(7*stepDistance) + octave;
+      key[i+5] = round(8*stepDistance) + octave;
+      key[i+6] = round(10)*stepDistance + octave;
+    }
+  } else {
+    //Major
+    for (int i = 0; i < sizeof(key); i += 7) {
+      octave = (i / 7) * stepDistance * 12;
+      key[i] = octave;
+      key[i+1] = round(2*stepDistance) + octave;
+      key[i+2] = round(4)*stepDistance + octave;
+      key[i+3] = round(5*stepDistance) + octave;
+      key[i+4] = round(7*stepDistance) + octave;
+      key[i+5] = round(9*stepDistance) + octave;
+      key[i+6] = round(11)*stepDistance + octave;
+    }
+  }
+  return key;
 }
