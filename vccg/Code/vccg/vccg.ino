@@ -108,8 +108,8 @@ void loop() {
   display.setCursor(0,0);
   printKey(currentKeyPosition);
   printMajority(isMinor);
-  printChord(currentChord);
-  display.println(currentOctave);
+  printChord(currentChord, isMinor);
+  printOctave(currentOctave);
   display.display();
   Serial.println(freeMemory());
 
@@ -287,31 +287,56 @@ int * generateKey(int keyNumber, int isMinor, float stepDistance) {
   return key;
 }
 
-char printChord(int chord) {
-  //static char chordText[3];
-  switch(chord) {
-
-    case 1:
-      display.println("I");
-      break;
-    case 2:
-      display.println("II");
-      break;
-    case 3:
-      display.println("III");
-      break;
-    case 4:
-      display.println("IV");
-      break;
-    case 5:
-      display.println("V");
-      break;
-    case 6:
-      display.println("VI");
-      break;
-    case 7:
-      display.println("VII");
-      break;
+char printChord(int chord, int isMinor) {
+  if (isMinor) {
+    switch(chord) {
+      case 1:
+        display.println("i");
+        break;
+      case 2:
+        display.println("ii");
+        break;
+      case 3:
+        display.println("III");
+        break;
+      case 4:
+        display.println("iv");
+        break;
+      case 5:
+        display.println("v");
+        break;
+      case 6:
+        display.println("VI");
+        break;
+      case 7:
+        display.println("VII");
+        break;
+    }
+  } else {
+    //Major Key
+    switch(chord) {
+      case 1:
+        display.println("I");
+        break;
+      case 2:
+        display.println("ii");
+        break;
+      case 3:
+        display.println("iii");
+        break;
+      case 4:
+        display.println("IV");
+        break;
+      case 5:
+        display.println("V");
+        break;
+      case 6:
+        display.println("vi");
+        break;
+      case 7:
+        display.println("vii");
+        break;
+    }
   }
 
   return 0;
@@ -341,6 +366,28 @@ int printMajority(int isMinor) {
     display.println("major");
   }
   return 0;
+}
+
+int printOctave(int currentOctave) {
+  int octave = currentOctave + 1;
+  display.println(octave);
+  return 0;
+}
+
+int computeKeyUp(int key) {
+  if(key == 11) {
+    return 0;
+  } else {
+    return key + 1;
+  }
+}
+
+int computeKeyDown(int key) {
+  if (key == 0) {
+    return 11;
+  } else {
+    return key - 1;
+  }
 }
 
 int freeMemory() {
