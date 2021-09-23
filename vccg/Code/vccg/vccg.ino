@@ -1,9 +1,23 @@
-// An arduino and a MCP4728 4-Channel 12-bit I2C DAC
-
-#include <Adafruit_MCP4728.h>
+// An arduino and a MCP4728 4-Channel 12-bit I2C DAC, and an OLED screen
 #include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <Adafruit_MCP4728.h>
 
-Adafruit_MCP4728 mcp;   //ADC device to send voltage values to
+#ifdef __arm__
+// should use uinstd.h to define sbrk but Due causes a conflict
+extern "C" char* sbrk(int incr);
+#else  // __ARM__
+extern char *__brkval;
+#endif  // __arm__
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+
+#define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+
+Adafruit_MCP4728 mcp;   //12bit quad DAC device to send voltage values to
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET); //oled screen
 
 int root= 0;            //Root note value
 int *chord;           //Array pointer to pass around
@@ -22,53 +36,12 @@ float stepDistance = 68.25; //5V => 5 Octaves => 60 notes => 12 bit dac => 4095 
 int pinVoltage = 0;
 int repeatVolt = 0;
 
-int notes[60] = {
-  0, 68, 136, 205, 273, 341, 410, 478, 546, 614, 682, 751, 
-  819, 887, 956, 1024, 1092, 1160, 1228, 1297, 1365, 1433, 1502, 1570, 
-  1638, 1706, 1774, 1843, 1911, 1979, 2048, 2116, 2184, 2252, 2320, 2389, 
-  2457, 2525, 2594, 2662, 2730, 2798, 2866, 2935, 3003, 3071, 3140, 3208, 
-  3276, 3344, 3412, 3481, 3549, 3617, 3686, 3754, 3822, 3890, 3958, 4027
-};
+int * keyNotes;
 
-int keyNotes[24][35] = {
-  {0, 136, 205, 341, 478, 614, 682, 819, 956, 1024, 1160, 1297, 1433, 1502, 1638, 1774, 1843, 1979, 2116, 2252, 2320, 2457, 2594, 2662, 2798, 2935, 3071, 3140, 3276, 3412, 3481, 3617, 3754, 3890, 3958},
-  {0, 68, 205, 341, 410, 546, 682, 819, 887, 1024, 1160, 1228, 1365, 1502, 1638, 1706, 1843, 1979, 2048, 2184, 2320, 2457, 2525, 2662, 2798, 2866, 3003, 3140, 3276, 3344, 3481, 3617, 3686, 3822, 3958},
-  {68, 205, 273, 410, 546, 682, 751, 887, 1024, 1092, 1228, 1365, 1502, 1570, 1706, 1843, 1911, 2048, 2184, 2320, 2389, 2525, 2662, 2730, 2866, 3003, 3140, 3208, 3344, 3481, 3549, 3686, 3822, 3958, 4027},
-  {68, 136, 273, 410, 478, 614, 751, 887, 956, 1092, 1228, 1297, 1433, 1570, 1706, 1774, 1911, 2048, 2116, 2252, 2389, 2525, 2594, 2730, 2866, 2935, 3071, 3208, 3344, 3412, 3549, 3686, 3754, 3890, 4027},
-  {136, 273, 341, 478, 614, 751, 819, 956, 1092, 1160, 1297, 1433, 1570, 1638, 1774, 1911, 1979, 2116, 2252, 2389, 2457, 2594, 2730, 2798, 2935, 3071, 3208, 3276, 3412, 3549, 3617, 3754, 3890, 4027, 4095},
-  {136, 205, 341, 478, 546, 682, 819, 956, 1024, 1160, 1297, 1365, 1502, 1638, 1774, 1843, 1979, 2116, 2184, 2320, 2457, 2594, 2662, 2798, 2935, 3003, 3140, 3276, 3412, 3481, 3617, 3754, 3822, 3958, 4095},
-  {205, 341, 410, 546, 682, 819, 887, 1024, 1160, 1228, 1365, 1502, 1638, 1706, 1843, 1979, 2048, 2184, 2320, 2457, 2525, 2662, 2798, 2866, 3003, 3140, 3276, 3344, 3481, 3617, 3686, 3822, 3958, 4095},
-  {205, 273, 410, 546, 614, 751, 887, 1024, 1092, 1228, 1365, 1433, 1570, 1706, 1843, 1911, 2048, 2184, 2252, 2389, 2525, 2662, 2730, 2866, 3003, 3071, 3208, 3344, 3481, 3549, 3686, 3822, 3890, 4027},
-  {273, 410, 478, 614, 751, 887, 956, 1092, 1228, 1297, 1433, 1570, 1706, 1774, 1911, 2048, 2116, 2252, 2389, 2525, 2594, 2730, 2866, 2935, 3071, 3208, 3344, 3412, 3549, 3686, 3754, 3890, 4027},
-  {273, 341, 478, 614, 682, 819, 956, 1092, 1160, 1297, 1433, 1502, 1638, 1774, 1911, 1979, 2116, 2252, 2320, 2457, 2594, 2730, 2798, 2935, 3071, 3140, 3276, 3412, 3549, 3617, 3754, 3890, 3958, 4095},
-  {341, 478, 546, 682, 819, 956, 1024, 1160, 1297, 1365, 1502, 1638, 1774, 1843, 1979, 2116, 2184, 2320, 2457, 2594, 2662, 2798, 2935, 3003, 3140, 3276, 3412, 3481, 3617, 3754, 3822, 3958, 4095},
-  {341, 410, 546, 682, 751, 887, 1024, 1160, 1228, 1365, 1502, 1570, 1706, 1843, 1979, 2048, 2184, 2320, 2389, 2525, 2662, 2798, 2866, 3003, 3140, 3208, 3344, 3481, 3617, 3686, 3822, 3958, 4027},
-  {410, 546, 614, 751, 887, 1024, 1092, 1228, 1365, 1433, 1570, 1706, 1843, 1911, 2048, 2184, 2252, 2389, 2525, 2662, 2730, 2866, 3003, 3071, 3208, 3344, 3481, 3549, 3686, 3822, 3890, 4027},
-  {410, 478, 614, 751, 819, 956, 1092, 1228, 1297, 1433, 1570, 1638, 1774, 1911, 2048, 2116, 2252, 2389, 2457, 2594, 2730, 2866, 2935, 3071, 3208, 3276, 3412, 3549, 3686, 3754, 3890, 4027, 4095},
-  {478, 614, 682, 819, 956, 1092, 1160, 1297, 1433, 1502, 1638, 1774, 1911, 1979, 2116, 2252, 2320, 2457, 2594, 2730, 2798, 2935, 3071, 3140, 3276, 3412, 3549, 3617, 3754, 3890, 3958, 4095},
-  {478, 546, 682, 819, 887, 1024, 1160, 1297, 1365, 1502, 1638, 1706, 1843, 1979, 2116, 2184, 2320, 2457, 2525, 2662, 2798, 2935, 3003, 3140, 3276, 3344, 3481, 3617, 3754, 3822, 3958, 4095},
-  {546, 682, 751, 887, 1024, 1160, 1228, 1365, 1502, 1570, 1706, 1843, 1979, 2048, 2184, 2320, 2389, 2525, 2662, 2798, 2866, 3003, 3140, 3208, 3344, 3481, 3617, 3686, 3822, 3958, 4027},
-  {546, 614, 751, 887, 956, 1092, 1228, 1365, 1433, 1570, 1706, 1774, 1911, 2048, 2184, 2252, 2389, 2525, 2594, 2730, 2866, 3003, 3071, 3208, 3344, 3412, 3549, 3686, 3822, 3890, 4027},
-  {614, 751, 819, 956, 1092, 1228, 1297, 1433, 1570, 1638, 1774, 1911, 2048, 2116, 2252, 2389, 2457, 2594, 2730, 2866, 2935, 3071, 3208, 3276, 3412, 3549, 3686, 3754, 3890, 4027, 4095},
-  {614, 682, 819, 956, 1024, 1160, 1297, 1433, 1502, 1638, 1774, 1843, 1979, 2116, 2252, 2320, 2457, 2594, 2662, 2798, 2935, 3071, 3140, 3276, 3412, 3481, 3617, 3754, 3890, 3958, 4095},
-  {682, 819, 887, 1024, 1160, 1297, 1365, 1502, 1638, 1706, 1843, 1979, 2116, 2184, 2320, 2457, 2525, 2662, 2798, 2935, 3003, 3140, 3276, 3344, 3481, 3617, 3754, 3822, 3958, 4095},
-  {682, 751, 887, 1024, 1092, 1228, 1365, 1502, 1570, 1706, 1843, 1911, 2048, 2184, 2320, 2389, 2525, 2662, 2730, 2866, 3003, 3140, 3208, 3344, 3481, 3549, 3686, 3822, 3958, 4027},
-  {751, 887, 956, 1092, 1228, 1365, 1433, 1570, 1706, 1774, 1911, 2048, 2184, 2252, 2389, 2525, 2594, 2730, 2866, 3003, 3071, 3208, 3344, 3412, 3549, 3686, 3822, 3890, 4027},
-  {751, 819, 956, 1092, 1160, 1297, 1433, 1570, 1638, 1774, 1911, 1979, 2116, 2252, 2389, 2457, 2594, 2730, 2798, 2935, 3071, 3208, 3276, 3412, 3549, 3617, 3754, 3890, 4027, 4095}
-};
 
-char keyNames[24][9] {
-  "Cmaj", "Cmin", "CsharpMaj", "CsharpMin",
-  "Dmaj", "Dmin", "DsharpMaj", "DsharpMin",
-  "Emaj", "Emin",
-  "Fmaj", "Fmin", "FsharpMaj", "FsharpMin",
-  "Gmaj", "Gmin", "GsharpMaj", "GsharpMin",
-  "Amaj", "Amin", "AsharpMaj", "AsharpMin",
-  "Bmaj", "Bmin"
-};
 
 int currentKeyNotes[35] = {};
-char currentKeyName[9] = {};
+char * currentKeyName;
 int currentOctave = 1;      // 1
 int currentChord = 1;       // I
 int currentKeyPosition = 0; //Cmaj
@@ -85,10 +58,24 @@ void setup(void) {
     }
   }
 
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { 
+    Serial.println(F("SSD1306 allocation failed"));
+    while (1) {
+      delay(10);
+    }
+  }
+
   mcp.setChannelValue(MCP4728_CHANNEL_A, 0);
   mcp.setChannelValue(MCP4728_CHANNEL_B, 0);
   mcp.setChannelValue(MCP4728_CHANNEL_C, 0);
   mcp.setChannelValue(MCP4728_CHANNEL_D, 0);
+
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.clearDisplay();
+  display.display();
+
+  Serial.println(F("Setup Complete"));
 }
 
 void loop() {
@@ -107,9 +94,9 @@ void loop() {
   currentOctave = octaveSelect(octaveCV);
   
   //Generate Outputs
-  root = keyNotes[currentKeyPosition][(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
+  keyNotes = generateKey(currentKeyPosition, isMinor, stepDistance);
+  root = keyNotes[(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
   chord = generateChord(root, chord, isMinor);
-
 
   //Set Outputs
   mcp.setChannelValue(MCP4728_CHANNEL_A, chord[0]);
@@ -117,10 +104,20 @@ void loop() {
   mcp.setChannelValue(MCP4728_CHANNEL_C, chord[2]);
   mcp.setChannelValue(MCP4728_CHANNEL_D, chord[0]);
 
-  delay(10);
+  display.clearDisplay();
+  display.setCursor(0,0);
+  printKey(currentKeyPosition);
+  printMajority(isMinor);
+  printChord(currentChord, isMinor);
+  printOctave(currentOctave);
+  display.display();
+  Serial.println(freeMemory());
+
+  delay(1000);
 
   //Debug
-  Serial.println(chord[0]); 
+  //Serial.println(chord[0]);
+  //Serial.println(keyNames[currentKeyPosition]);
 }
 
 //Return however many half steps
@@ -250,4 +247,156 @@ int * generateChord(int root, int chordRequest, int isMinor) {
   }
 
   return chord;
+}
+
+//Given a desired key, and whether the key is minor or not, and the distance between notes:
+//Generate an array of values to send to the DAC that should be in the key
+int * generateKey(int keyNumber, int isMinor, float stepDistance) {
+  //Minor: whole, half, whole, whole, half, whole, whole
+  //Major: whole, whole, half, whole, whole, whole, half
+  static int key[35] = {};
+
+  //Find first note:
+  int root = round(keyNumber * stepDistance);
+  float octave = 0;
+  if (isMinor) {
+    //Minor
+    for (int i = 0; i < sizeof(key); i += 7) {
+      octave = (i / 7) * stepDistance * 12;
+      key[i] = octave;
+      key[i+1] = round(2*stepDistance) + octave;
+      key[i+2] = round(3*stepDistance) + octave;
+      key[i+3] = round(5*stepDistance) + octave;
+      key[i+4] = round(7*stepDistance) + octave;
+      key[i+5] = round(8*stepDistance) + octave;
+      key[i+6] = round(10*stepDistance) + octave;
+    }
+  } else {
+    //Major
+    for (int i = 0; i < sizeof(key); i += 7) {
+      octave = (i / 7) * stepDistance * 12;
+      key[i] = octave;
+      key[i+1] = round(2*stepDistance) + octave;
+      key[i+2] = round(4*stepDistance) + octave;
+      key[i+3] = round(5*stepDistance) + octave;
+      key[i+4] = round(7*stepDistance) + octave;
+      key[i+5] = round(9*stepDistance) + octave;
+      key[i+6] = round(11*stepDistance) + octave;
+    }
+  }
+  return key;
+}
+
+char printChord(int chord, int isMinor) {
+  if (isMinor) {
+    switch(chord) {
+      case 1:
+        display.println("i");
+        break;
+      case 2:
+        display.println("ii");
+        break;
+      case 3:
+        display.println("III");
+        break;
+      case 4:
+        display.println("iv");
+        break;
+      case 5:
+        display.println("v");
+        break;
+      case 6:
+        display.println("VI");
+        break;
+      case 7:
+        display.println("VII");
+        break;
+    }
+  } else {
+    //Major Key
+    switch(chord) {
+      case 1:
+        display.println("I");
+        break;
+      case 2:
+        display.println("ii");
+        break;
+      case 3:
+        display.println("iii");
+        break;
+      case 4:
+        display.println("IV");
+        break;
+      case 5:
+        display.println("V");
+        break;
+      case 6:
+        display.println("vi");
+        break;
+      case 7:
+        display.println("vii");
+        break;
+    }
+  }
+
+  return 0;
+  
+}
+
+int printKey(int key) {
+  char keyNames[12][3] {
+    "C", "C#",
+    "D", "D#",
+    "E",
+    "F", "F#",
+    "G", "G#",
+    "A", "A#",
+    "B"
+  };
+  //static char keyName[3] = {keyNames[key]};
+
+  display.println(keyNames[key]);
+  return 0;
+}
+
+int printMajority(int isMinor) {
+  if(isMinor) {
+    display.println("minor");
+  } else {
+    display.println("major");
+  }
+  return 0;
+}
+
+int printOctave(int currentOctave) {
+  int octave = currentOctave + 1;
+  display.println(octave);
+  return 0;
+}
+
+int computeKeyUp(int key) {
+  if(key == 11) {
+    return 0;
+  } else {
+    return key + 1;
+  }
+}
+
+int computeKeyDown(int key) {
+  if (key == 0) {
+    return 11;
+  } else {
+    return key - 1;
+  }
+}
+
+int freeMemory() {
+  char top;
+#ifdef __arm__
+  return &top - reinterpret_cast<char*>(sbrk(0));
+#elif defined(CORE_TEENSY) || (ARDUINO > 103 && ARDUINO != 151)
+  return &top - __brkval;
+#else  // __arm__
+  return __brkval ? &top - __brkval : &top - __malloc_heap_start;
+#endif  // __arm__
 }
