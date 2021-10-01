@@ -92,9 +92,6 @@ void setup(void) {
   display.display();
 
   keyNotes = generateKey(currentKeyPosition, isMinor, stepDistance);
-  for(int i = 0; i < 35; i++) {
-    Serial.println(keyNotes[i]);
-  }
 
   Serial.println(F("Setup Complete"));
 }
@@ -114,7 +111,6 @@ void loop() {
   //Make Sense of Inputs
   if ((isMinorReading != isMinorPrevious) && (isMinorReading == 1)) {
     isMinor = toggleMinor(isMinor);
-    Serial.println(isMinor);
   } 
   isMinorPrevious = isMinorReading;
 
@@ -123,7 +119,6 @@ void loop() {
   
   //Generate Outputs
   root = keyNotes[(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
-  Serial.println(root);
   chord = generateChord(root, chord, isMinor);
 
   // if (clockCV == 0 && clockCV != clockCVPrevious) {
@@ -136,7 +131,6 @@ void loop() {
   mcp.setChannelValue(MCP4728_CHANNEL_D, chord[0]);
 
   display.clearDisplay();
-  display.setCursor(0,0);
   printKey(currentKeyPosition);
   printMajority(isMinor);
   printChord(currentChord, isMinor);
@@ -308,6 +302,8 @@ int * generateKey(int keyNumber, int isMinor, float stepDistance) {
 }
 
 char printChord(int chord, int isMinor) {
+  display.setCursor(64,32);
+  display.setTextSize(4);
   if (isMinor) {
     switch(chord) {
       case 1:
@@ -374,12 +370,15 @@ int printKey(int key) {
     "B"
   };
   //static char keyName[3] = {keyNames[key]};
-
+  display.setCursor(0,0);
+  display.setTextSize(4);
   display.println(keyNames[key]);
   return 0;
 }
 
 int printMajority(int isMinor) {
+  display.setCursor(64,0);
+  display.setTextSize(2);
   if(isMinor) {
     display.println("minor");
   } else {
@@ -390,6 +389,8 @@ int printMajority(int isMinor) {
 
 int printOctave(int printOctave) {
   int octave = printOctave + 1;
+  display.setCursor(16,40);
+  display.setTextSize(2);
   display.println(octave);
   return 0;
 }
