@@ -23,14 +23,22 @@ int root= 0;            //Root note value
 int *chord;           //Array pointer to pass around
 
 int noteCV = 0;         //CV of note to quantize to scale;
-int clockCV = 0;        //Whether the module has received a clock signal
 int chordCV = 0;        //CV of the chord. Should scale 0-5v, chords I->VII
 int octaveCV = 0;       //CV of the octave. Should scale 0-5v, 1v/octave
 
 int keyUp = 0;          //Press to increment key, i.e. from C to C#
-int keyDown = 0;        //Press to decrement key, i.e. from G to F#
+int keyUpPrevious = 1;
 
-int isMinor = 0;          //Switch to toggle major/minor
+int keyDown = 0;        //Press to decrement key, i.e. from G to F#
+int keyDownPrevious = 1;
+
+int clockCV = 0;        //Whether the module has received a clock signal
+int clockCVPrevious = 1;
+
+bool isMinor = 0;          //Switch to toggle major/minor
+bool isMinorReading = 0;
+bool isMinorPrevious = 0;
+
 float stepDistance = 68.25; //5V => 5 Octaves => 60 notes => 12 bit dac => 4095 / 60;
 
 int pinVoltage = 0;
@@ -38,24 +46,30 @@ int repeatVolt = 0;
 
 int * keyNotes;
 
-
-
 int currentKeyNotes[35] = {};
 char * currentKeyName;
 int currentOctave = 1;      // 1
 int currentChord = 1;       // I
 int currentKeyPosition = 0; //Cmaj
+int keyCompute = 0;
 
 void setup(void) {
   Serial.begin(115200);
   Serial.println("Unit On!");
 
+  pinMode(6, INPUT); //isMinor
+  pinMode(7, INPUT); //keyDown
+  pinMode(8, INPUT); //keyUp
+  pinMode(9, INPUT); //Chord Clock
+
   // Try to initialize!
   if (!mcp.begin()) {
-    Serial.println("Failed to find MCP4728 chip");
+    Serial.println(F("Failed to find MCP4728 chip"));
     while (1) {
       delay(10);
     }
+  } else {
+    Serial.println(F("DAC online"));
   }
 
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { 
@@ -63,6 +77,8 @@ void setup(void) {
     while (1) {
       delay(10);
     }
+  } else {
+    Serial.println(F("Display online"));
   }
 
   mcp.setChannelValue(MCP4728_CHANNEL_A, 0);
@@ -70,12 +86,15 @@ void setup(void) {
   mcp.setChannelValue(MCP4728_CHANNEL_C, 0);
   mcp.setChannelValue(MCP4728_CHANNEL_D, 0);
 
+  keyNotes = generateKey(currentKeyPosition, isMinor, stepDistance);
+
   display.setTextSize(1);
   display.setTextColor(WHITE);
   display.clearDisplay();
   display.display();
 
   Serial.println(F("Setup Complete"));
+  Serial.println(currentKeyPosition);
 }
 
 void loop() {
@@ -87,46 +106,88 @@ void loop() {
   clockCV = digitalRead(9);
   keyUp = digitalRead(8);
   keyDown = digitalRead(7);
-  isMinor = digitalRead(6);
+  isMinorReading = digitalRead(6);
+
+/*
+  if (keyUp == 0 && keyUpPrevious == 1) {
+    Serial.println("yikes?");
+    currentKeyPosition = computeKeyUp(currentKeyPosition);
+  }
+  keyUpPrevious = keyUp;
+  */
+
+  /*
+    
+    //Trigger a ghost clock on key change
+    clockCV = 0;
+    clockCVPrevious = 1;
+
+    Serial.println("Key up");
+    Serial.println(currentKeyPosition);
+  }
+  keyUpPrevious = keyUp;
+  Serial.println(currentKeyPosition);
+
+  /*
+  if (keyDown == 0 && keyDown != keyDownPrevious) {
+    keyCompute = computeKeyDown(currentKeyPosition);
+    currentKeyPosition = keyCompute;
+    
+    //Trigger a ghost clock on keychange
+    clockCV = 0;
+    clockCVPrevious = 1;
+
+    Serial.println("Key down");
+    Serial.println(currentKeyPosition);
+  }
+  keyDownPrevious = keyDown;
+  Serial.println(currentKeyPosition);
+  */
+
+  if ((isMinorReading != isMinorPrevious) && (isMinorReading == 0)) {
+    isMinor = toggleMinor(isMinor);
+  } 
+  isMinorPrevious = isMinorReading;
+
 
   //Make Sense of Inputs
   currentChord = chordSelect(chordCV);
   currentOctave = octaveSelect(octaveCV);
   
   //Generate Outputs
-  keyNotes = generateKey(currentKeyPosition, isMinor, stepDistance);
-  root = keyNotes[(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
+  //Serial.println(keyNotes);
+  root = &keyNotes[(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
   chord = generateChord(root, chord, isMinor);
+    
+ // if (clockCV == 0 && clockCV != clockCVPrevious) {
+    clockCVPrevious = clockCV;
 
-  //Set Outputs
-  mcp.setChannelValue(MCP4728_CHANNEL_A, chord[0]);
-  mcp.setChannelValue(MCP4728_CHANNEL_B, chord[1]);
-  mcp.setChannelValue(MCP4728_CHANNEL_C, chord[2]);
-  mcp.setChannelValue(MCP4728_CHANNEL_D, chord[0]);
+    //Set Outputs
+    mcp.setChannelValue(MCP4728_CHANNEL_A, chord[0]);
+    mcp.setChannelValue(MCP4728_CHANNEL_B, chord[1]);
+    mcp.setChannelValue(MCP4728_CHANNEL_C, chord[2]);
+    mcp.setChannelValue(MCP4728_CHANNEL_D, chord[0]);
 
-  display.clearDisplay();
-  display.setCursor(0,0);
-  printKey(currentKeyPosition);
-  printMajority(isMinor);
-  printChord(currentChord, isMinor);
-  printOctave(currentOctave);
-  display.display();
-  Serial.println(freeMemory());
+    display.clearDisplay();
+    display.setCursor(0,0);
+    printKey(currentKeyPosition);
+    printMajority(isMinor);
+    printChord(currentChord, isMinor);
+    printOctave(currentOctave);
+    display.display();
+ // } else {
+    clockCVPrevious = clockCV;
+ // }
 
-  delay(1000);
-
+  //Serial.println(freeMemory());
   //Debug
   //Serial.println(chord[0]);
   //Serial.println(keyNames[currentKeyPosition]);
+
+  //delay(1000);
 }
 
 //Return however many half steps
-//I'm not sure this is the best way to do things
-//but since the ADC needs integers, and since I don't have
-//whole numbers, keeping as much detail as possible makes sense.
-//This may be a hit to performance, in which case I can optimize it out
-//but it leaves me flexible in case I move to fewer octaves of output or
-//need to rescale otherwise
 int halfSteps(int numberOfHalfSteps) {
   float halfSteps = numberOfHalfSteps * stepDistance;
   return round(halfSteps);
@@ -368,25 +429,40 @@ int printMajority(int isMinor) {
   return 0;
 }
 
-int printOctave(int currentOctave) {
-  int octave = currentOctave + 1;
+int printOctave(int printOctave) {
+  int octave = printOctave + 1;
   display.println(octave);
   return 0;
 }
 
 int computeKeyUp(int key) {
-  if(key == 11) {
-    return 0;
-  } else {
-    return key + 1;
+  key++;
+
+  if(key >= 12) {
+    key = 0;
   }
+
+  return key;
 }
 
 int computeKeyDown(int key) {
-  if (key == 0) {
+  key--;
+  
+  if (key <= 0) {
     return 11;
+  }
+  
+  return key;
+}
+
+int toggleMinor(int isMinor) {
+  Serial.println(F("minoring"));
+  if(isMinor == 1) {
+    isMinor = 0;
+    return 0;
   } else {
-    return key - 1;
+    isMinor = 1;
+    return 1;
   }
 }
 
