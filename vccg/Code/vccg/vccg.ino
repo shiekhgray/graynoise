@@ -302,7 +302,7 @@ int * generateKey(int keyNumber, int isMinor, float stepDistance) {
 }
 
 char printChord(int chord, int isMinor) {
-  display.setCursor(64,32);
+  display.setCursor(48,32);
   display.setTextSize(4);
   if (isMinor) {
     switch(chord) {
@@ -389,7 +389,7 @@ int printMajority(int isMinor) {
 
 int printOctave(int printOctave) {
   int octave = printOctave + 1;
-  display.setCursor(16,40);
+  display.setCursor(8,45);
   display.setTextSize(2);
   display.println(octave);
   return 0;
