@@ -27,10 +27,10 @@ int chordCV = 0;        //CV of the chord. Should scale 0-5v, chords I->VII
 int octaveCV = 0;       //CV of the octave. Should scale 0-5v, 1v/octave
 
 int keyUp = 0;          //Press to increment key, i.e. from C to C#
-int keyUpPrevious = 1;
+int keyUpPrevious = 0;
 
 int keyDown = 0;        //Press to decrement key, i.e. from G to F#
-int keyDownPrevious = 1;
+int keyDownPrevious = 0;
 
 int clockCV = 0;        //Whether the module has received a clock signal
 int clockCVPrevious = 1;
@@ -45,6 +45,8 @@ int pinVoltage = 0;
 int repeatVolt = 0;
 
 int * keyNotes;
+
+int yeet = 0;
 
 int currentKeyNotes[35] = {};
 char * currentKeyName;
@@ -91,8 +93,8 @@ void setup(void) {
   display.clearDisplay();
   display.display();
 
-  keyNotes = generateKey(currentKeyPosition, isMinor, stepDistance);
-
+  currentKeyPosition = 0;
+  generateKey();
   Serial.println(F("Setup Complete"));
 }
 
@@ -110,21 +112,34 @@ void loop() {
 
   //Make Sense of Inputs
   if ((isMinorReading != isMinorPrevious) && (isMinorReading == 1)) {
-    isMinor = toggleMinor(isMinor);
+    toggleMinor(isMinor);
   } 
   isMinorPrevious = isMinorReading;
+
+  if ((keyUp != keyUpPrevious) && (keyUp == 1)) {
+    computeKeyUp();
+    generateKey();
+  }
+  keyUpPrevious = keyUp;
+
+  if ((keyDown != keyDownPrevious) && (keyDown == 1)) {
+    computeKeyDown();
+    generateKey();
+  }
+  keyDownPrevious = keyDown;
 
   currentChord = chordSelect(chordCV);
   currentOctave = octaveSelect(octaveCV);
   
   //Generate Outputs
-  root = keyNotes[(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
+  //root = keyNotes[(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
+
+  root = currentKeyNotes[(currentOctave * 7) + currentChord];
+
   chord = generateChord(root, chord, isMinor);
 
-  // if (clockCV == 0 && clockCV != clockCVPrevious) {
-  clockCVPrevious = clockCV;
-
   //Set Outputs
+
   mcp.setChannelValue(MCP4728_CHANNEL_A, chord[0]);
   mcp.setChannelValue(MCP4728_CHANNEL_B, chord[1]);
   mcp.setChannelValue(MCP4728_CHANNEL_C, chord[2]);
@@ -265,40 +280,38 @@ int * generateChord(int root, int chordRequest, int isMinor) {
 
 //Given a desired key, and whether the key is minor or not, and the distance between notes:
 //Generate an array of values to send to the DAC that should be in the key
-int * generateKey(int keyNumber, int isMinor, float stepDistance) {
+void generateKey() {
   //Minor: whole, half, whole, whole, half, whole, whole
   //Major: whole, whole, half, whole, whole, whole, half
-  static int key[35] = {};
 
   //Find first note:
-  int root = round(keyNumber * stepDistance);
+  int root = round(currentKeyPosition * stepDistance);
   float octave = 0;
   if (isMinor) {
     //Minor
-    for (int i = 0; i < sizeof(key); i += 7) {
+    for (int i = 0; i < (sizeof(currentKeyNotes)/sizeof(currentKeyNotes[0])); i += 7) {
       octave = (i / 7) * stepDistance * 12;
-      key[i] = octave;
-      key[i+1] = round(2*stepDistance) + octave;
-      key[i+2] = round(3*stepDistance) + octave;
-      key[i+3] = round(5*stepDistance) + octave;
-      key[i+4] = round(7*stepDistance) + octave;
-      key[i+5] = round(8*stepDistance) + octave;
-      key[i+6] = round(10*stepDistance) + octave;
+      currentKeyNotes[i] = octave;
+      currentKeyNotes[i+1] = round(2*stepDistance) + octave;
+      currentKeyNotes[i+2] = round(3*stepDistance) + octave;
+      currentKeyNotes[i+3] = round(5*stepDistance) + octave;
+      currentKeyNotes[i+4] = round(7*stepDistance) + octave;
+      currentKeyNotes[i+5] = round(8*stepDistance) + octave;
+      currentKeyNotes[i+6] = round(10*stepDistance) + octave;
     }
   } else {
     //Major
-    for (int i = 0; i < sizeof(key); i += 7) {
+    for (int i = 0; i < (sizeof(currentKeyNotes)/sizeof(currentKeyNotes[0])); i += 7) {
       octave = (i / 7) * stepDistance * 12;
-      key[i] = octave;
-      key[i+1] = round(2*stepDistance) + octave;
-      key[i+2] = round(4*stepDistance) + octave;
-      key[i+3] = round(5*stepDistance) + octave;
-      key[i+4] = round(7*stepDistance) + octave;
-      key[i+5] = round(9*stepDistance) + octave;
-      key[i+6] = round(11*stepDistance) + octave;
+      currentKeyNotes[i] = octave;
+      currentKeyNotes[i+1] = round(2*stepDistance) + octave;
+      currentKeyNotes[i+2] = round(4*stepDistance) + octave;
+      currentKeyNotes[i+3] = round(5*stepDistance) + octave;
+      currentKeyNotes[i+4] = round(7*stepDistance) + octave;
+      currentKeyNotes[i+5] = round(9*stepDistance) + octave;
+      currentKeyNotes[i+6] = round(11*stepDistance) + octave;
     }
   }
-  return key;
 }
 
 char printChord(int chord, int isMinor) {
@@ -307,21 +320,24 @@ char printChord(int chord, int isMinor) {
   if (isMinor) {
     switch(chord) {
       case 1:
-        display.println("i");
+        display.println(" i");
         break;
       case 2:
+        display.setCursor(60,32);
         display.println("ii");
         break;
       case 3:
         display.println("III");
         break;
       case 4:
+        display.setCursor(60,32);
         display.println("iv");
         break;
       case 5:
-        display.println("v");
+        display.println(" v");
         break;
       case 6:
+        display.setCursor(60,32);
         display.println("VI");
         break;
       case 7:
@@ -332,21 +348,24 @@ char printChord(int chord, int isMinor) {
     //Major Key
     switch(chord) {
       case 1:
-        display.println("I");
+        display.println(" I");
         break;
       case 2:
+        display.setCursor(60,32);
         display.println("ii");
         break;
       case 3:
         display.println("iii");
         break;
       case 4:
+        display.setCursor(60,32);
         display.println("IV");
         break;
       case 5:
-        display.println("V");
+        display.println(" V");
         break;
       case 6:
+        display.setCursor(60,32);
         display.println("vi");
         break;
       case 7:
@@ -377,7 +396,7 @@ int printKey(int key) {
 }
 
 int printMajority(int isMinor) {
-  display.setCursor(64,0);
+  display.setCursor(58,0);
   display.setTextSize(2);
   if(isMinor) {
     display.println("minor");
@@ -395,32 +414,34 @@ int printOctave(int printOctave) {
   return 0;
 }
 
-int computeKeyUp(int key) {
-  key++;
+bool computeKeyUp() {
+  currentKeyPosition++;
 
-  if(key >= 12) {
-    key = 0;
+  if(currentKeyPosition >= 12) {
+    currentKeyPosition = 0;
   }
 
-  return key;
+  return true;
 }
 
-int computeKeyDown(int key) {
-  key--;
+bool computeKeyDown() {
+  currentKeyPosition--;
   
-  if (key <= 0) {
-    return 11;
+  if (currentKeyPosition < 0) {
+    currentKeyPosition = 11;
   }
-  
-  return key;
+
+  return true;
 }
 
-int toggleMinor(int isMinorToggle) {
+bool toggleMinor(int isMinorToggle) {
   if(isMinorToggle == 1) {
-    return 0;
+    isMinor = 0;
   } else {
-    return 1;
+    isMinor = 1;
   }
+
+  return true;
 }
 
 int freeMemory() {
