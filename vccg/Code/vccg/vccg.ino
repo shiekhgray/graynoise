@@ -113,6 +113,7 @@ void loop() {
   //Make Sense of Inputs
   if ((isMinorReading != isMinorPrevious) && (isMinorReading == 1)) {
     toggleMinor(isMinor);
+    generateKey();
   } 
   isMinorPrevious = isMinorReading;
 
@@ -286,32 +287,34 @@ void generateKey() {
 
   //Find first note:
   int root = round(currentKeyPosition * stepDistance);
-  float octave = 0;
+  float octaveOffset = 0;
   if (isMinor) {
     //Minor
     for (int i = 0; i < (sizeof(currentKeyNotes)/sizeof(currentKeyNotes[0])); i += 7) {
-      octave = (i / 7) * stepDistance * 12;
-      currentKeyNotes[i] = octave;
-      currentKeyNotes[i+1] = round(2*stepDistance) + octave;
-      currentKeyNotes[i+2] = round(3*stepDistance) + octave;
-      currentKeyNotes[i+3] = round(5*stepDistance) + octave;
-      currentKeyNotes[i+4] = round(7*stepDistance) + octave;
-      currentKeyNotes[i+5] = round(8*stepDistance) + octave;
-      currentKeyNotes[i+6] = round(10*stepDistance) + octave;
+      octaveOffset = ((i / 7) * stepDistance * 12) + root;
+      currentKeyNotes[i] = octaveOffset;
+      currentKeyNotes[i+1] = round(2*stepDistance) + octaveOffset;
+      currentKeyNotes[i+2] = round(3*stepDistance) + octaveOffset;
+      currentKeyNotes[i+3] = round(5*stepDistance) + octaveOffset;
+      currentKeyNotes[i+4] = round(7*stepDistance) + octaveOffset;
+      currentKeyNotes[i+5] = round(8*stepDistance) + octaveOffset;
+      currentKeyNotes[i+6] = round(10*stepDistance) + octaveOffset;
     }
   } else {
     //Major
     for (int i = 0; i < (sizeof(currentKeyNotes)/sizeof(currentKeyNotes[0])); i += 7) {
-      octave = (i / 7) * stepDistance * 12;
-      currentKeyNotes[i] = octave;
-      currentKeyNotes[i+1] = round(2*stepDistance) + octave;
-      currentKeyNotes[i+2] = round(4*stepDistance) + octave;
-      currentKeyNotes[i+3] = round(5*stepDistance) + octave;
-      currentKeyNotes[i+4] = round(7*stepDistance) + octave;
-      currentKeyNotes[i+5] = round(9*stepDistance) + octave;
-      currentKeyNotes[i+6] = round(11*stepDistance) + octave;
+      octaveOffset = ((i / 7) * stepDistance * 12) + root;
+      currentKeyNotes[i] = octaveOffset;
+      currentKeyNotes[i+1] = round(2*stepDistance) + octaveOffset;
+      currentKeyNotes[i+2] = round(4*stepDistance) + octaveOffset;
+      currentKeyNotes[i+3] = round(5*stepDistance) + octaveOffset;
+      currentKeyNotes[i+4] = round(7*stepDistance) + octaveOffset;
+      currentKeyNotes[i+5] = round(9*stepDistance) + octaveOffset;
+      currentKeyNotes[i+6] = round(11*stepDistance) + octaveOffset;
     }
   }
+
+  Serial.println(currentKeyNotes[0]);
 }
 
 char printChord(int chord, int isMinor) {
@@ -414,7 +417,7 @@ int printOctave(int printOctave) {
   return 0;
 }
 
-bool computeKeyUp() {
+void computeKeyUp() {
   currentKeyPosition++;
 
   if(currentKeyPosition >= 12) {
@@ -424,7 +427,7 @@ bool computeKeyUp() {
   return true;
 }
 
-bool computeKeyDown() {
+void computeKeyDown() {
   currentKeyPosition--;
   
   if (currentKeyPosition < 0) {
@@ -434,7 +437,7 @@ bool computeKeyDown() {
   return true;
 }
 
-bool toggleMinor(int isMinorToggle) {
+void toggleMinor(int isMinorToggle) {
   if(isMinorToggle == 1) {
     isMinor = 0;
   } else {
@@ -442,15 +445,4 @@ bool toggleMinor(int isMinorToggle) {
   }
 
   return true;
-}
-
-int freeMemory() {
-  char top;
-#ifdef __arm__
-  return &top - reinterpret_cast<char*>(sbrk(0));
-#elif defined(CORE_TEENSY) || (ARDUINO > 103 && ARDUINO != 151)
-  return &top - __brkval;
-#else  // __arm__
-  return __brkval ? &top - __brkval : &top - __malloc_heap_start;
-#endif  // __arm__
 }
