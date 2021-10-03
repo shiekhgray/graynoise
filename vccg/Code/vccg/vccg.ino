@@ -4,20 +4,13 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_MCP4728.h>
 
-#ifdef __arm__
-// should use uinstd.h to define sbrk but Due causes a conflict
-extern "C" char* sbrk(int incr);
-#else  // __ARM__
-extern char *__brkval;
-#endif  // __arm__
-
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
 #define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 
 Adafruit_MCP4728 mcp;   //12bit quad DAC device to send voltage values to
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET); //oled screen
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET, 1000000, 1000000); //oled screen
 
 int root= 0;            //Root note value
 int *chord;           //Array pointer to pass around
@@ -45,7 +38,7 @@ bool isMinorPrevious = 0;
 
 float stepDistance = 68.25; //5V => 5 Octaves => 60 notes => 12 bit dac => 4095 / 60;
 
-bool recomputeKey = 0;
+bool recomputeKey = true;
 
 int currentKeyNotes[35] = {};
 char * currentKeyName;
@@ -151,11 +144,7 @@ void loop() {
   melodyClockPrevious = melodyClock;
 
   //Set Outputs
-
-  mcp.setChannelValue(MCP4728_CHANNEL_A, chord[0]);
-  mcp.setChannelValue(MCP4728_CHANNEL_B, chord[1]);
-  mcp.setChannelValue(MCP4728_CHANNEL_C, chord[2]);
-  mcp.setChannelValue(MCP4728_CHANNEL_D, melody);
+  mcp.fastWrite(chord[0], chord[1], chord[2], melody);
 
   display.clearDisplay();
   printKey(currentKeyPosition);
@@ -326,8 +315,8 @@ void generateKey() {
 }
 
 char printChord(int chord, int isMinor) {
-  display.setCursor(48,32);
   display.setTextSize(4);
+  display.setCursor(48,32);
   if (isMinor) {
     switch(chord) {
       case 1:
