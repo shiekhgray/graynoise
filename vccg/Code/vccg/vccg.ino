@@ -21,6 +21,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET); //oled
 
 int root= 0;            //Root note value
 int *chord;           //Array pointer to pass around
+int melody;           //quantized melody note
 
 int noteCV = 0;         //CV of note to quantize to scale;
 int chordCV = 0;        //CV of the chord. Should scale 0-5v, chords I->VII
@@ -35,18 +36,16 @@ int keyDownPrevious = 0;
 int clockCV = 0;        //Whether the module has received a clock signal
 int clockCVPrevious = 1;
 
+int melodyClock = 0;
+int melodyClockPrevious = 1;
+
 int isMinor = 0;          //Switch to toggle major/minor
 bool isMinorReading = 0;
 bool isMinorPrevious = 0;
 
 float stepDistance = 68.25; //5V => 5 Octaves => 60 notes => 12 bit dac => 4095 / 60;
 
-int pinVoltage = 0;
-int repeatVolt = 0;
-
-int * keyNotes;
-
-int yeet = 0;
+bool recomputeKey = 0;
 
 int currentKeyNotes[35] = {};
 char * currentKeyName;
@@ -57,12 +56,14 @@ int keyCompute = 0;
 
 void setup(void) {
   Serial.begin(115200);
-  Serial.println("Unit On!");
+  Serial.println(F("Unit On!"));
 
-  pinMode(6, INPUT); //isMinor
-  pinMode(7, INPUT); //keyDown
-  pinMode(8, INPUT); //keyUp
-  pinMode(9, INPUT); //Chord Clock
+  pinMode(5, INPUT); //chordClock
+  pinMode(6, INPUT); //melodyClock
+  pinMode(7, INPUT); //keyUp
+  pinMode(8, INPUT); //keyDown
+  pinMode(9, INPUT); //isMinor
+  pinMode(13, OUTPUT); //autoClock
 
   // Try to initialize!
   if (!mcp.begin()) {
@@ -105,7 +106,7 @@ void loop() {
   noteCV = analogRead(A2);
 
   clockCV = digitalRead(5);
-  //melodyClock = digitalRead(6);
+  melodyClock = digitalRead(6);
   keyUp = digitalRead(7);
   keyDown = digitalRead(8);
   isMinorReading = digitalRead(9);
@@ -113,38 +114,48 @@ void loop() {
   //Make Sense of Inputs
   if ((isMinorReading != isMinorPrevious) && (isMinorReading == 1)) {
     toggleMinor(isMinor);
-    generateKey();
+    recomputeKey = true;
   } 
   isMinorPrevious = isMinorReading;
 
   if ((keyUp != keyUpPrevious) && (keyUp == 1)) {
     computeKeyUp();
-    generateKey();
+    recomputeKey = true;
   }
   keyUpPrevious = keyUp;
 
   if ((keyDown != keyDownPrevious) && (keyDown == 1)) {
     computeKeyDown();
-    generateKey();
+    recomputeKey = true;
   }
   keyDownPrevious = keyDown;
 
-  currentChord = chordSelect(chordCV);
-  currentOctave = octaveSelect(octaveCV);
+  if ((clockCV == 0) && (clockCV != clockCVPrevious)) {
+    if (recomputeKey) {
+      generateKey();
+      recomputeKey = false;
+    }
+    currentChord = chordSelect(chordCV);
+    currentOctave = octaveSelect(octaveCV);
   
-  //Generate Outputs
-  //root = keyNotes[(currentOctave * 7) + currentChord]; //Find the root note, given the inputs
+    //Generate Outputs
+    root = currentKeyNotes[(currentOctave * 7) + currentChord];
 
-  root = currentKeyNotes[(currentOctave * 7) + currentChord];
+    chord = generateChord(root, chord);
+  }
+  clockCVPrevious = clockCV;
 
-  chord = generateChord(root, chord, isMinor);
+  if((melodyClock == 0) && (melodyClock != melodyClockPrevious)) {
+    melody = closest(noteCV * 4); //10bit input to 12bit output
+  }
+  melodyClockPrevious = melodyClock;
 
   //Set Outputs
 
   mcp.setChannelValue(MCP4728_CHANNEL_A, chord[0]);
   mcp.setChannelValue(MCP4728_CHANNEL_B, chord[1]);
   mcp.setChannelValue(MCP4728_CHANNEL_C, chord[2]);
-  mcp.setChannelValue(MCP4728_CHANNEL_D, chord[0]);
+  mcp.setChannelValue(MCP4728_CHANNEL_D, melody);
 
   display.clearDisplay();
   printKey(currentKeyPosition);
@@ -153,7 +164,8 @@ void loop() {
   printOctave(currentOctave);
   display.display();
 
-  clockCVPrevious = clockCV;
+  //Clock ourselves
+  digitalWrite(13, !digitalRead(13));
 }
 
 //Return however many half steps
@@ -190,22 +202,20 @@ int * diminished(int root) {
 }
 
 
-//Given a sorted array of numbers and a target, find the closest note
-int closest(int numbers[], int target) {
+//Given a target, find the closest note in the currentKey.
+int closest(int target) {
   int closest = 0;
-  int i = 0;
-
-  for(i = 0; i < sizeof(&numbers); i++) {
-    if (target < numbers[i]) {
-      if ((numbers[i] - target) >= (numbers[i-1] - target)) {
-        closest = numbers[i-1];
+  for (int i = 0; i < (sizeof(currentKeyNotes)/sizeof(currentKeyNotes[0])); i++) {
+    if (target < currentKeyNotes[i]) {
+      if ((currentKeyNotes[i] - target) >= (currentKeyNotes[i-1] - target)) {
+        closest = currentKeyNotes[i-1];
       } else {
-        closest = numbers[i];
+        closest = currentKeyNotes[i];
       }
       return closest;
     }
   }
-  return numbers[sizeof(&numbers)];
+  return currentKeyNotes[sizeof(currentKeyNotes[0])]; //highest note in key
 }
 
 //Based on whatever CV we see, pick an octave between 0 and 4
@@ -252,7 +262,7 @@ int chordSelect(int chordCV) {
   return chord;
 }
 
-int * generateChord(int root, int chordRequest, int isMinor) {
+int * generateChord(int root, int chordRequest) {
   static int * chord;
   if (isMinor) {
     //Minor Key
@@ -313,8 +323,6 @@ void generateKey() {
       currentKeyNotes[i+6] = round(11*stepDistance) + octaveOffset;
     }
   }
-
-  Serial.println(currentKeyNotes[0]);
 }
 
 char printChord(int chord, int isMinor) {
