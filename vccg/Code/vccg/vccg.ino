@@ -10,7 +10,7 @@
 #define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 
 Adafruit_MCP4728 mcp;   //12bit quad DAC device to send voltage values to
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET, 1000000, 1000000); //oled screen
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET, 1000000, 3400000); //oled screen
 
 int root= 0;            //Root note value
 int *chord;           //Array pointer to pass around
@@ -133,7 +133,6 @@ void loop() {
   
     //Generate Outputs
     root = currentKeyNotes[(currentOctave * 7) + currentChord];
-
     chord = generateChord(root, chord);
   }
   clockCVPrevious = clockCV;
