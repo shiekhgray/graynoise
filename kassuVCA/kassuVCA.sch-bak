@@ -562,28 +562,28 @@ F 3 "http://www.ti.com/lit/ds/symlink/tl071.pdf" H 1650 3600 50  0001 C CNN
 	3    1650 3600
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	4500 2400 4800 2400
 $Comp
-L Transistor_BJT:2N3904 Q?
-U 1 1 623E074C
+L Transistor_BJT:MBT3904DW1 Q?
+U 1 1 624028ED
 P 4100 2200
 F 0 "Q?" H 4290 2246 50  0000 L CNN
-F 1 "2N3904" H 4100 1900 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-92L_Inline_Wide" H 4300 2125 50  0001 L CIN
-F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 4100 2200 50  0001 L CNN
+F 1 "MBT3904DW1" H 3950 1900 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4300 2300 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub_link/Collateral/MBT3904DW1T1-D.PDF" H 4100 2200 50  0001 C CNN
 	1    4100 2200
 	1    0    0    -1  
 $EndComp
 $Comp
-L Transistor_BJT:2N3904 Q?
-U 1 1 623E0DE4
+L Transistor_BJT:MBT3904DW1 Q?
+U 2 1 62403809
 P 4900 2200
-F 0 "Q?" H 5090 2246 50  0000 L CNN
-F 1 "2N3904" H 4800 1900 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-92L_Inline_Wide" H 5100 2125 50  0001 L CIN
-F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 4900 2200 50  0001 L CNN
-	1    4900 2200
+F 0 "Q?" H 5091 2246 50  0000 L CNN
+F 1 "MBT3904DW1" H 4700 1900 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 5100 2300 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub_link/Collateral/MBT3904DW1T1-D.PDF" H 4900 2200 50  0001 C CNN
+	2    4900 2200
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	4500 2400 4800 2400
 $EndSCHEMATC
