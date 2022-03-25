@@ -210,8 +210,6 @@ Wire Wire Line
 Wire Wire Line
 	4500 2600 4500 2400
 Connection ~ 4500 2400
-Wire Wire Line
-	4500 2400 4800 2400
 $Comp
 L power:GND #PWR0106
 U 1 1 6231A88C
@@ -240,8 +238,8 @@ $Comp
 L Device:R R12
 U 1 1 62321712
 P 5850 1900
-F 0 "R12" V 5643 1900 50  0000 C CNN
-F 1 "10K" V 5734 1900 50  0000 C CNN
+F 0 "R12" V 6050 1900 50  0000 C CNN
+F 1 "10K" V 5950 1900 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5780 1900 50  0001 C CNN
 F 3 "~" H 5850 1900 50  0001 C CNN
 	1    5850 1900
@@ -540,7 +538,7 @@ F 1 "TL072" H 6650 2076 50  0000 C CNN
 F 2 "Package_DIP:DIP-8_W7.62mm_LongPads" H 6650 1800 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/tl071.pdf" H 6650 1800 50  0001 C CNN
 	1    6650 1800
-	1    0    0    -1  
+	1    0    0    1   
 $EndComp
 $Comp
 L Amplifier_Operational:TL072 U1
@@ -565,25 +563,27 @@ F 3 "http://www.ti.com/lit/ds/symlink/tl071.pdf" H 1650 3600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Transistor_BJT:MBT3904DW1 Q2
-U 1 1 6229C328
+L Transistor_BJT:2N3904 Q?
+U 1 1 623E074C
 P 4100 2200
-F 0 "Q2" H 4290 2246 50  0000 L CNN
-F 1 "MBT3904DW1" H 4290 2155 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4300 2300 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub_link/Collateral/MBT3904DW1T1-D.PDF" H 4100 2200 50  0001 C CNN
+F 0 "Q?" H 4290 2246 50  0000 L CNN
+F 1 "2N3904" H 4100 1900 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92L_Inline_Wide" H 4300 2125 50  0001 L CIN
+F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 4100 2200 50  0001 L CNN
 	1    4100 2200
 	1    0    0    -1  
 $EndComp
 $Comp
-L Transistor_BJT:MBT3904DW1 Q2
-U 2 1 6229CF49
+L Transistor_BJT:2N3904 Q?
+U 1 1 623E0DE4
 P 4900 2200
-F 0 "Q2" H 5091 2246 50  0000 L CNN
-F 1 "MBT3904DW1" H 5091 2155 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 5100 2300 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub_link/Collateral/MBT3904DW1T1-D.PDF" H 4900 2200 50  0001 C CNN
-	2    4900 2200
+F 0 "Q?" H 5090 2246 50  0000 L CNN
+F 1 "2N3904" H 4800 1900 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92L_Inline_Wide" H 5100 2125 50  0001 L CIN
+F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 4900 2200 50  0001 L CNN
+	1    4900 2200
 	-1   0    0    -1  
 $EndComp
+Wire Wire Line
+	4500 2400 4800 2400
 $EndSCHEMATC
