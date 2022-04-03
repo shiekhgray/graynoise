@@ -1,0 +1,1085 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 4 7
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Transistor_BJT:2N3904 Q?
+U 1 1 624FE83D
+P 3650 3550
+AR Path="/624FE83D" Ref="Q?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE83D" Ref="Q?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE83D" Ref="Q?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE83D" Ref="Q?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE83D" Ref="Q?"  Part="1" 
+F 0 "Q?" H 3840 3596 50  0000 L CNN
+F 1 "2N3904" H 3840 3505 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92L_Inline_Wide" H 3850 3475 50  0001 L CIN
+F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 3650 3550 50  0001 L CNN
+	1    3650 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 624FE83E
+P 4550 1650
+AR Path="/624FE83E" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE83E" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE83E" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE83E" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE83E" Ref="R?"  Part="1" 
+F 0 "R?" H 4620 1696 50  0000 L CNN
+F 1 "10K" H 4620 1605 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4480 1650 50  0001 C CNN
+F 3 "~" H 4550 1650 50  0001 C CNN
+	1    4550 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 624F267F
+P 5150 1650
+AR Path="/624F267F" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F267F" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F267F" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F267F" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F267F" Ref="R?"  Part="1" 
+F 0 "R?" H 5220 1696 50  0000 L CNN
+F 1 "10K" H 5220 1605 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5080 1650 50  0001 C CNN
+F 3 "~" H 5150 1650 50  0001 C CNN
+	1    5150 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 624F2685
+P 4850 2700
+AR Path="/624F2685" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F2685" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F2685" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F2685" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F2685" Ref="R?"  Part="1" 
+F 0 "R?" H 4920 2746 50  0000 L CNN
+F 1 "22K" H 4920 2655 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4780 2700 50  0001 C CNN
+F 3 "~" H 4850 2700 50  0001 C CNN
+	1    4850 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_POT Trim?
+U 1 1 624F268B
+P 2400 4700
+AR Path="/624F268B" Ref="Trim?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F268B" Ref="Trim?"  Part="1" 
+AR Path="/624C0657/624FE468/624F268B" Ref="Trim?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F268B" Ref="Trim?"  Part="1" 
+AR Path="/624C0657/624FE546/624F268B" Ref="Trim?"  Part="1" 
+F 0 "Trim?" H 2331 4746 50  0000 R CNN
+F 1 "100K" H 2331 4655 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Alps_RK09K_Single_Vertical" H 2400 4700 50  0001 C CNN
+F 3 "~" H 2400 4700 50  0001 C CNN
+	1    2400 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 624F2691
+P 3600 2150
+AR Path="/624F2691" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F2691" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F2691" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F2691" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F2691" Ref="R?"  Part="1" 
+F 0 "R?" V 3393 2150 50  0000 C CNN
+F 1 "220K" V 3484 2150 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3530 2150 50  0001 C CNN
+F 3 "~" H 3600 2150 50  0001 C CNN
+	1    3600 2150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 624FE843
+P 4000 2400
+AR Path="/624FE843" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE843" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE843" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE843" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE843" Ref="R?"  Part="1" 
+F 0 "R?" H 3930 2354 50  0000 R CNN
+F 1 "1K" H 3930 2445 50  0000 R CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3930 2400 50  0001 C CNN
+F 3 "~" H 4000 2400 50  0001 C CNN
+	1    4000 2400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+12V #PWR?
+U 1 1 624FE844
+P 4850 1400
+AR Path="/624FE844" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE844" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE844" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE844" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE844" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4850 1250 50  0001 C CNN
+F 1 "+12V" H 4865 1573 50  0000 C CNN
+F 2 "" H 4850 1400 50  0001 C CNN
+F 3 "" H 4850 1400 50  0001 C CNN
+	1    4850 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4550 1500 4850 1500
+Wire Wire Line
+	4850 1400 4850 1500
+Connection ~ 4850 1500
+Wire Wire Line
+	4850 1500 5150 1500
+Wire Wire Line
+	4550 1800 4550 1850
+Wire Wire Line
+	5150 1800 5150 1850
+Wire Wire Line
+	4550 2350 4850 2350
+Wire Wire Line
+	4850 2550 4850 2350
+Connection ~ 4850 2350
+$Comp
+L power:GND #PWR?
+U 1 1 624FE845
+P 5600 2150
+AR Path="/624FE845" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE845" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE845" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE845" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE845" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5600 1900 50  0001 C CNN
+F 1 "GND" H 5605 1977 50  0000 C CNN
+F 2 "" H 5600 2150 50  0001 C CNN
+F 3 "" H 5600 2150 50  0001 C CNN
+	1    5600 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 2150 5600 2150
+$Comp
+L Device:R R?
+U 1 1 624F26B3
+P 6200 1650
+AR Path="/624F26B3" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F26B3" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F26B3" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F26B3" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F26B3" Ref="R?"  Part="1" 
+F 0 "R?" V 5993 1650 50  0000 C CNN
+F 1 "10K" V 6084 1650 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6130 1650 50  0001 C CNN
+F 3 "~" H 6200 1650 50  0001 C CNN
+	1    6200 1650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 624F26B9
+P 6200 1850
+AR Path="/624F26B9" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F26B9" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F26B9" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F26B9" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F26B9" Ref="R?"  Part="1" 
+F 0 "R?" V 6400 1850 50  0000 C CNN
+F 1 "10K" V 6300 1850 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6130 1850 50  0001 C CNN
+F 3 "~" H 6200 1850 50  0001 C CNN
+	1    6200 1850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5150 1850 6050 1850
+Connection ~ 5150 1850
+Wire Wire Line
+	5150 1850 5150 1950
+Wire Wire Line
+	6350 1850 6550 1850
+Wire Wire Line
+	6350 1650 6550 1650
+Wire Wire Line
+	4550 1850 4400 1850
+Wire Wire Line
+	4400 1850 4400 1100
+Wire Wire Line
+	4400 1100 5750 1100
+Wire Wire Line
+	5750 1100 5750 1650
+Wire Wire Line
+	5750 1650 6050 1650
+Connection ~ 4550 1850
+Wire Wire Line
+	4550 1850 4550 1950
+Wire Wire Line
+	3750 2150 4000 2150
+Wire Wire Line
+	4000 2250 4000 2150
+Connection ~ 4000 2150
+Wire Wire Line
+	4000 2150 4250 2150
+$Comp
+L power:GND #PWR?
+U 1 1 624F26CF
+P 4000 2650
+AR Path="/624F26CF" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F26CF" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F26CF" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F26CF" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F26CF" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4000 2400 50  0001 C CNN
+F 1 "GND" H 4005 2477 50  0000 C CNN
+F 2 "" H 4000 2650 50  0001 C CNN
+F 3 "" H 4000 2650 50  0001 C CNN
+	1    4000 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4000 2650 4000 2550
+$Comp
+L Connector:AudioJack2_SwitchT In?
+U 1 1 624F26D6
+P 2900 2150
+AR Path="/624F26D6" Ref="In?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F26D6" Ref="In?"  Part="1" 
+AR Path="/624C0657/624FE468/624F26D6" Ref="In?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F26D6" Ref="In?"  Part="1" 
+AR Path="/624C0657/624FE546/624F26D6" Ref="In?"  Part="1" 
+F 0 "In?" H 2721 2083 50  0000 R CNN
+F 1 "AudioJack2_SwitchT" H 2721 2174 50  0000 R CNN
+F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 2900 2150 50  0001 C CNN
+F 3 "~" H 2900 2150 50  0001 C CNN
+	1    2900 2150
+	1    0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624F26DC
+P 3100 2400
+AR Path="/624F26DC" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F26DC" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F26DC" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F26DC" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F26DC" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3100 2150 50  0001 C CNN
+F 1 "GND" H 3105 2227 50  0000 C CNN
+F 2 "" H 3100 2400 50  0001 C CNN
+F 3 "" H 3100 2400 50  0001 C CNN
+	1    3100 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 2400 3100 2250
+Wire Wire Line
+	3100 2150 3450 2150
+$Comp
+L Device:R R?
+U 1 1 624FE84B
+P 6950 1150
+AR Path="/624FE84B" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE84B" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE84B" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE84B" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE84B" Ref="R?"  Part="1" 
+F 0 "R?" V 6743 1150 50  0000 C CNN
+F 1 "220K" V 6834 1150 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6880 1150 50  0001 C CNN
+F 3 "~" H 6950 1150 50  0001 C CNN
+	1    6950 1150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6800 1150 6550 1150
+Wire Wire Line
+	6550 1150 6550 1650
+Connection ~ 6550 1650
+Wire Wire Line
+	6550 1650 6700 1650
+Wire Wire Line
+	7100 1150 7400 1150
+Wire Wire Line
+	7400 1150 7400 1750
+Wire Wire Line
+	7400 1750 7300 1750
+$Comp
+L Device:R R?
+U 1 1 624F26F1
+P 6550 2200
+AR Path="/624F26F1" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F26F1" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F26F1" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F26F1" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F26F1" Ref="R?"  Part="1" 
+F 0 "R?" H 6480 2154 50  0000 R CNN
+F 1 "220K" H 6480 2245 50  0000 R CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6480 2200 50  0001 C CNN
+F 3 "~" H 6550 2200 50  0001 C CNN
+	1    6550 2200
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624FE84D
+P 6550 2500
+AR Path="/624FE84D" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE84D" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE84D" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE84D" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE84D" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6550 2250 50  0001 C CNN
+F 1 "GND" H 6555 2327 50  0000 C CNN
+F 2 "" H 6550 2500 50  0001 C CNN
+F 3 "" H 6550 2500 50  0001 C CNN
+	1    6550 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 2500 6550 2350
+Wire Wire Line
+	6550 2050 6550 1850
+Connection ~ 6550 1850
+Wire Wire Line
+	6550 1850 6700 1850
+Connection ~ 7400 1750
+$Comp
+L Device:R R?
+U 1 1 624FE84E
+P 4850 4200
+AR Path="/624FE84E" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE84E" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE84E" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE84E" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE84E" Ref="R?"  Part="1" 
+F 0 "R?" H 4780 4154 50  0000 R CNN
+F 1 "10K" H 4780 4245 50  0000 R CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4780 4200 50  0001 C CNN
+F 3 "~" H 4850 4200 50  0001 C CNN
+	1    4850 4200
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624FE84F
+P 4100 3300
+AR Path="/624FE84F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE84F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE84F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE84F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE84F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4100 3050 50  0001 C CNN
+F 1 "GND" H 4105 3127 50  0000 C CNN
+F 2 "" H 4100 3300 50  0001 C CNN
+F 3 "" H 4100 3300 50  0001 C CNN
+	1    4100 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 3300 4100 3150
+Wire Wire Line
+	4100 3150 3750 3150
+Wire Wire Line
+	3750 3150 3750 3350
+Wire Wire Line
+	3750 3750 4850 3750
+Wire Wire Line
+	4850 3750 4850 4050
+Connection ~ 4850 3750
+$Comp
+L power:-12V #PWR?
+U 1 1 624FE850
+P 4850 4650
+AR Path="/624FE850" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE850" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE850" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE850" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE850" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4850 4750 50  0001 C CNN
+F 1 "-12V" H 4865 4823 50  0000 C CNN
+F 2 "" H 4850 4650 50  0001 C CNN
+F 3 "" H 4850 4650 50  0001 C CNN
+	1    4850 4650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4850 4650 4850 4350
+$Comp
+L Device:R R?
+U 1 1 624FE851
+P 3050 4700
+AR Path="/624FE851" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE851" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE851" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE851" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE851" Ref="R?"  Part="1" 
+F 0 "R?" V 2843 4700 50  0000 C CNN
+F 1 "22K" V 2934 4700 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2980 4700 50  0001 C CNN
+F 3 "~" H 3050 4700 50  0001 C CNN
+	1    3050 4700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3200 3550 3200 3950
+Wire Wire Line
+	3450 3550 3200 3550
+Wire Wire Line
+	2550 4700 2900 4700
+$Comp
+L power:+12V #PWR?
+U 1 1 624FE852
+P 2400 4500
+AR Path="/624FE852" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE852" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE852" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE852" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE852" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2400 4350 50  0001 C CNN
+F 1 "+12V" H 2415 4673 50  0000 C CNN
+F 2 "" H 2400 4500 50  0001 C CNN
+F 3 "" H 2400 4500 50  0001 C CNN
+	1    2400 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:-12V #PWR?
+U 1 1 624F273E
+P 2400 4900
+AR Path="/624F273E" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F273E" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F273E" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F273E" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F273E" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2400 5000 50  0001 C CNN
+F 1 "-12V" H 2415 5073 50  0000 C CNN
+F 2 "" H 2400 4900 50  0001 C CNN
+F 3 "" H 2400 4900 50  0001 C CNN
+	1    2400 4900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2400 4900 2400 4850
+Wire Wire Line
+	2400 4550 2400 4500
+$Comp
+L power:-12V #PWR?
+U 1 1 624F2746
+P 2250 3700
+AR Path="/624F2746" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F2746" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F2746" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F2746" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F2746" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2250 3800 50  0001 C CNN
+F 1 "-12V" H 2265 3873 50  0000 C CNN
+F 2 "" H 2250 3700 50  0001 C CNN
+F 3 "" H 2250 3700 50  0001 C CNN
+	1    2250 3700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2250 3700 2250 3600
+Wire Wire Line
+	4850 2850 4850 3750
+Wire Wire Line
+	2250 2900 2250 3000
+$Comp
+L power:+12V #PWR?
+U 1 1 624F274F
+P 2250 2900
+AR Path="/624F274F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F274F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F274F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F274F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F274F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2250 2750 50  0001 C CNN
+F 1 "+12V" H 2265 3073 50  0000 C CNN
+F 2 "" H 2250 2900 50  0001 C CNN
+F 3 "" H 2250 2900 50  0001 C CNN
+	1    2250 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Amplifier_Operational:TL072 U?
+U 1 1 624F2755
+P 7000 1750
+AR Path="/624F2755" Ref="U?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F2755" Ref="U?"  Part="1" 
+AR Path="/624C0657/624FE468/624F2755" Ref="U?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F2755" Ref="U?"  Part="1" 
+AR Path="/624C0657/624FE546/624F2755" Ref="U?"  Part="1" 
+F 0 "U?" H 7000 2117 50  0000 C CNN
+F 1 "TL072" H 7000 2026 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm_LongPads" H 7000 1750 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tl071.pdf" H 7000 1750 50  0001 C CNN
+	1    7000 1750
+	1    0    0    1   
+$EndComp
+$Comp
+L Amplifier_Operational:TL072 U?
+U 2 1 624F275B
+P 2300 3300
+AR Path="/624F275B" Ref="U?"  Part="2" 
+AR Path="/624C0657/624C3CB8/624F275B" Ref="U?"  Part="2" 
+AR Path="/624C0657/624FE468/624F275B" Ref="U?"  Part="2" 
+AR Path="/624C0657/624FE4CA/624F275B" Ref="U?"  Part="2" 
+AR Path="/624C0657/624FE546/624F275B" Ref="U?"  Part="2" 
+F 0 "U?" H 2300 3667 50  0000 C CNN
+F 1 "TL072" H 2300 3576 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm_LongPads" H 2300 3300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tl071.pdf" H 2300 3300 50  0001 C CNN
+	2    2300 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Amplifier_Operational:TL072 U?
+U 3 1 624F2761
+P 2350 3300
+AR Path="/624F2761" Ref="U?"  Part="3" 
+AR Path="/624C0657/624C3CB8/624F2761" Ref="U?"  Part="3" 
+AR Path="/624C0657/624FE468/624F2761" Ref="U?"  Part="3" 
+AR Path="/624C0657/624FE4CA/624F2761" Ref="U?"  Part="3" 
+AR Path="/624C0657/624FE546/624F2761" Ref="U?"  Part="3" 
+F 0 "U?" H 2308 3346 50  0000 L CNN
+F 1 "TL072" H 2308 3255 50  0000 L CNN
+F 2 "Package_DIP:DIP-8_W7.62mm_LongPads" H 2350 3300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tl071.pdf" H 2350 3300 50  0001 C CNN
+	3    2350 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4850 2350 5150 2350
+$Comp
+L Transistor_BJT:MBT3904DW1 Q?
+U 1 1 624FE859
+P 4450 2150
+AR Path="/624FE859" Ref="Q?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE859" Ref="Q?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE859" Ref="Q?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE859" Ref="Q?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE859" Ref="Q?"  Part="1" 
+F 0 "Q?" H 4640 2196 50  0000 L CNN
+F 1 "MBT3904DW1" H 4300 1850 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 4650 2250 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub_link/Collateral/MBT3904DW1T1-D.PDF" H 4450 2150 50  0001 C CNN
+	1    4450 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:MBT3904DW1 Q?
+U 2 1 624FE85A
+P 5250 2150
+AR Path="/624FE85A" Ref="Q?"  Part="2" 
+AR Path="/624C0657/624C3CB8/624FE85A" Ref="Q?"  Part="2" 
+AR Path="/624C0657/624FE468/624FE85A" Ref="Q?"  Part="2" 
+AR Path="/624C0657/624FE4CA/624FE85A" Ref="Q?"  Part="2" 
+AR Path="/624C0657/624FE546/624FE85A" Ref="Q?"  Part="2" 
+F 0 "Q?" H 5441 2196 50  0000 L CNN
+F 1 "MBT3904DW1" H 5050 1850 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 5450 2250 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub_link/Collateral/MBT3904DW1T1-D.PDF" H 5250 2150 50  0001 C CNN
+	2    5250 2150
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:AudioJack2_SwitchT In?
+U 1 1 624F2774
+P 1200 3250
+AR Path="/624F2774" Ref="In?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F2774" Ref="In?"  Part="1" 
+AR Path="/624C0657/624FE468/624F2774" Ref="In?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F2774" Ref="In?"  Part="1" 
+AR Path="/624C0657/624FE546/624F2774" Ref="In?"  Part="1" 
+F 0 "In?" H 1021 3183 50  0000 R CNN
+F 1 "AudioJack2_SwitchT" H 1021 3274 50  0000 R CNN
+F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 1200 3250 50  0001 C CNN
+F 3 "~" H 1200 3250 50  0001 C CNN
+	1    1200 3250
+	1    0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624F277A
+P 1400 3500
+AR Path="/624F277A" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F277A" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F277A" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F277A" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F277A" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 1400 3250 50  0001 C CNN
+F 1 "GND" H 1405 3327 50  0000 C CNN
+F 2 "" H 1400 3500 50  0001 C CNN
+F 3 "" H 1400 3500 50  0001 C CNN
+	1    1400 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 3350 1400 3500
+$Comp
+L Device:R_POT CVAtten?
+U 1 1 624F2781
+P 1650 3400
+AR Path="/624F2781" Ref="CVAtten?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F2781" Ref="CVAtten?"  Part="1" 
+AR Path="/624C0657/624FE468/624F2781" Ref="CVAtten?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F2781" Ref="CVAtten?"  Part="1" 
+AR Path="/624C0657/624FE546/624F2781" Ref="CVAtten?"  Part="1" 
+F 0 "CVAtten?" H 1581 3446 50  0000 R CNN
+F 1 "100K" H 1581 3355 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Alps_RK09K_Single_Vertical" H 1650 3400 50  0001 C CNN
+F 3 "~" H 1650 3400 50  0001 C CNN
+	1    1650 3400
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	1650 3250 1400 3250
+Wire Wire Line
+	1800 3400 2000 3400
+$Comp
+L power:GND #PWR?
+U 1 1 624F2789
+P 1650 3700
+AR Path="/624F2789" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F2789" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F2789" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F2789" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F2789" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 1650 3450 50  0001 C CNN
+F 1 "GND" H 1655 3527 50  0000 C CNN
+F 2 "" H 1650 3700 50  0001 C CNN
+F 3 "" H 1650 3700 50  0001 C CNN
+	1    1650 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 3700 1650 3550
+$Comp
+L Device:R R?
+U 1 1 624F2790
+P 2250 2600
+AR Path="/624F2790" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F2790" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F2790" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F2790" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F2790" Ref="R?"  Part="1" 
+F 0 "R?" V 2043 2600 50  0000 C CNN
+F 1 "47K" V 2134 2600 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2180 2600 50  0001 C CNN
+F 3 "~" H 2250 2600 50  0001 C CNN
+	1    2250 2600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2400 2600 2600 2600
+Wire Wire Line
+	2600 2600 2600 3300
+Wire Wire Line
+	2000 3200 2000 2600
+Wire Wire Line
+	2000 2600 2100 2600
+$Comp
+L Device:R R?
+U 1 1 624F279A
+P 2950 3300
+AR Path="/624F279A" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F279A" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F279A" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F279A" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F279A" Ref="R?"  Part="1" 
+F 0 "R?" V 2743 3300 50  0000 C CNN
+F 1 "22K" V 2834 3300 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 2880 3300 50  0001 C CNN
+F 3 "~" H 2950 3300 50  0001 C CNN
+	1    2950 3300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3100 3300 3200 3300
+Wire Wire Line
+	3200 3300 3200 3550
+Connection ~ 3200 3550
+Wire Wire Line
+	2800 3300 2600 3300
+Connection ~ 2600 3300
+$Comp
+L Device:R R?
+U 1 1 624F27A5
+P 1350 2550
+AR Path="/624F27A5" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F27A5" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F27A5" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F27A5" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F27A5" Ref="R?"  Part="1" 
+F 0 "R?" H 1280 2504 50  0000 R CNN
+F 1 "220K" H 1280 2595 50  0000 R CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1280 2550 50  0001 C CNN
+F 3 "~" H 1350 2550 50  0001 C CNN
+	1    1350 2550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 624F27AB
+P 1700 2550
+AR Path="/624F27AB" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F27AB" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624F27AB" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F27AB" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624F27AB" Ref="R?"  Part="1" 
+F 0 "R?" H 1630 2504 50  0000 R CNN
+F 1 "100K" H 1630 2595 50  0000 R CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1630 2550 50  0001 C CNN
+F 3 "~" H 1700 2550 50  0001 C CNN
+	1    1700 2550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624F27B1
+P 1850 2750
+AR Path="/624F27B1" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F27B1" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F27B1" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F27B1" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F27B1" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 1850 2500 50  0001 C CNN
+F 1 "GND" H 1855 2577 50  0000 C CNN
+F 2 "" H 1850 2750 50  0001 C CNN
+F 3 "" H 1850 2750 50  0001 C CNN
+	1    1850 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1850 2750 1850 2550
+Wire Wire Line
+	1550 2550 1500 2550
+Wire Wire Line
+	1550 2550 1550 3150
+Wire Wire Line
+	1550 3150 1400 3150
+Connection ~ 1550 2550
+$Comp
+L power:+12V #PWR?
+U 1 1 624FE864
+P 1200 2400
+AR Path="/624FE864" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE864" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE864" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE864" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE864" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 1200 2250 50  0001 C CNN
+F 1 "+12V" H 1215 2573 50  0000 C CNN
+F 2 "" H 1200 2400 50  0001 C CNN
+F 3 "" H 1200 2400 50  0001 C CNN
+	1    1200 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1200 2400 1200 2550
+$Comp
+L Device:C C?
+U 1 1 624FE865
+P 3000 3950
+AR Path="/624FE865" Ref="C?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE865" Ref="C?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE865" Ref="C?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE865" Ref="C?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE865" Ref="C?"  Part="1" 
+F 0 "C?" V 2748 3950 50  0000 C CNN
+F 1 "C" V 2839 3950 50  0000 C CNN
+F 2 "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 3038 3800 50  0001 C CNN
+F 3 "~" H 3000 3950 50  0001 C CNN
+	1    3000 3950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3150 3950 3200 3950
+Connection ~ 3200 3950
+Wire Wire Line
+	3200 3950 3200 4200
+$Comp
+L power:GND #PWR?
+U 1 1 624FE866
+P 2700 4050
+AR Path="/624FE866" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE866" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE866" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE866" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE866" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2700 3800 50  0001 C CNN
+F 1 "GND" H 2705 3877 50  0000 C CNN
+F 2 "" H 2700 4050 50  0001 C CNN
+F 3 "" H 2700 4050 50  0001 C CNN
+	1    2700 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 4050 2700 3950
+Wire Wire Line
+	2700 3950 2850 3950
+Wire Wire Line
+	3500 4200 3200 4200
+Connection ~ 3200 4200
+Wire Wire Line
+	3200 4200 3200 4700
+$Comp
+L Device:R R?
+U 1 1 624FE867
+P 4200 4400
+AR Path="/624FE867" Ref="R?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE867" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE867" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE867" Ref="R?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE867" Ref="R?"  Part="1" 
+F 0 "R?" H 4130 4354 50  0000 R CNN
+F 1 "1K" H 4130 4445 50  0000 R CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 4130 4400 50  0001 C CNN
+F 3 "~" H 4200 4400 50  0001 C CNN
+	1    4200 4400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624F27DD
+P 4200 4650
+AR Path="/624F27DD" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F27DD" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F27DD" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F27DD" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F27DD" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4200 4400 50  0001 C CNN
+F 1 "GND" H 4205 4477 50  0000 C CNN
+F 2 "" H 4200 4650 50  0001 C CNN
+F 3 "" H 4200 4650 50  0001 C CNN
+	1    4200 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 4650 4200 4550
+$Comp
+L Device:R_POT Send1A?
+U 1 1 624F27E4
+P 8150 2050
+AR Path="/624F27E4" Ref="Send1A?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F27E4" Ref="Send1A?"  Part="1" 
+AR Path="/624C0657/624FE468/624F27E4" Ref="Send1A?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F27E4" Ref="Send1A?"  Part="1" 
+AR Path="/624C0657/624FE546/624F27E4" Ref="Send1A?"  Part="1" 
+F 0 "Send1A?" H 8081 2096 50  0000 R CNN
+F 1 "100K" H 8081 2005 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Alps_RK09K_Single_Vertical" H 8150 2050 50  0001 C CNN
+F 3 "~" H 8150 2050 50  0001 C CNN
+	1    8150 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_POT Send1B?
+U 1 1 624F27EA
+P 8700 2050
+AR Path="/624F27EA" Ref="Send1B?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F27EA" Ref="Send1B?"  Part="1" 
+AR Path="/624C0657/624FE468/624F27EA" Ref="Send1B?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F27EA" Ref="Send1B?"  Part="1" 
+AR Path="/624C0657/624FE546/624F27EA" Ref="Send1B?"  Part="1" 
+F 0 "Send1B?" H 8631 2096 50  0000 R CNN
+F 1 "100K" H 8631 2005 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Alps_RK09K_Single_Vertical" H 8700 2050 50  0001 C CNN
+F 3 "~" H 8700 2050 50  0001 C CNN
+	1    8700 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_POT Send1C?
+U 1 1 624F27F0
+P 9200 2050
+AR Path="/624F27F0" Ref="Send1C?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F27F0" Ref="Send1C?"  Part="1" 
+AR Path="/624C0657/624FE468/624F27F0" Ref="Send1C?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F27F0" Ref="Send1C?"  Part="1" 
+AR Path="/624C0657/624FE546/624F27F0" Ref="Send1C?"  Part="1" 
+F 0 "Send1C?" H 9131 2096 50  0000 R CNN
+F 1 "100K" H 9131 2005 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Alps_RK09K_Single_Vertical" H 9200 2050 50  0001 C CNN
+F 3 "~" H 9200 2050 50  0001 C CNN
+	1    9200 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_POT Level?
+U 1 1 624F27F6
+P 9700 2050
+AR Path="/624F27F6" Ref="Level?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F27F6" Ref="Level?"  Part="1" 
+AR Path="/624C0657/624FE468/624F27F6" Ref="Level?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F27F6" Ref="Level?"  Part="1" 
+AR Path="/624C0657/624FE546/624F27F6" Ref="Level?"  Part="1" 
+F 0 "Level?" H 9631 2096 50  0000 R CNN
+F 1 "100K" H 9631 2005 50  0000 R CNN
+F 2 "MixerFootprints:A-1623_SlidePot" H 9700 2050 50  0001 C CNN
+F 3 "~" H 9700 2050 50  0001 C CNN
+	1    9700 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624FE86D
+P 8150 2450
+AR Path="/624FE86D" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE86D" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE86D" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE86D" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE86D" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8150 2200 50  0001 C CNN
+F 1 "GND" H 8155 2277 50  0000 C CNN
+F 2 "" H 8150 2450 50  0001 C CNN
+F 3 "" H 8150 2450 50  0001 C CNN
+	1    8150 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624F2802
+P 8700 2450
+AR Path="/624F2802" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624F2802" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624F2802" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624F2802" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624F2802" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8700 2200 50  0001 C CNN
+F 1 "GND" H 8705 2277 50  0000 C CNN
+F 2 "" H 8700 2450 50  0001 C CNN
+F 3 "" H 8700 2450 50  0001 C CNN
+	1    8700 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624FE86F
+P 9200 2450
+AR Path="/624FE86F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE86F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE86F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE86F" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE86F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9200 2200 50  0001 C CNN
+F 1 "GND" H 9205 2277 50  0000 C CNN
+F 2 "" H 9200 2450 50  0001 C CNN
+F 3 "" H 9200 2450 50  0001 C CNN
+	1    9200 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624FE870
+P 9700 2450
+AR Path="/624FE870" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE870" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE870" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE870" Ref="#PWR?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE870" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9700 2200 50  0001 C CNN
+F 1 "GND" H 9705 2277 50  0000 C CNN
+F 2 "" H 9700 2450 50  0001 C CNN
+F 3 "" H 9700 2450 50  0001 C CNN
+	1    9700 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9700 2450 9700 2200
+Wire Wire Line
+	9200 2450 9200 2200
+Wire Wire Line
+	8700 2450 8700 2200
+Wire Wire Line
+	8150 2450 8150 2200
+Wire Wire Line
+	9700 1750 9700 1900
+Wire Wire Line
+	9200 1900 9200 1750
+Connection ~ 9200 1750
+Wire Wire Line
+	9200 1750 9700 1750
+Wire Wire Line
+	8700 1900 8700 1750
+Connection ~ 8700 1750
+Wire Wire Line
+	8700 1750 9200 1750
+Wire Wire Line
+	8150 1900 8150 1750
+Connection ~ 8150 1750
+Wire Wire Line
+	8150 1750 8700 1750
+Wire Wire Line
+	8300 2300 8300 2050
+Wire Wire Line
+	8850 2300 8850 2050
+Wire Wire Line
+	9350 2300 9350 2050
+Wire Wire Line
+	9850 2050 9850 1750
+Text GLabel 8300 2300 2    50   Output ~ 0
+SendA
+Text GLabel 8850 2300 2    50   Output ~ 0
+SendB
+Text GLabel 9350 2300 2    50   Output ~ 0
+SendC
+$Comp
+L Switch:SW_DPDT_x2 SW?
+U 1 1 624FE871
+P 3700 4200
+AR Path="/624FE871" Ref="SW?"  Part="1" 
+AR Path="/624C0657/624C3CB8/624FE871" Ref="SW?"  Part="1" 
+AR Path="/624C0657/624FE468/624FE871" Ref="SW?"  Part="1" 
+AR Path="/624C0657/624FE4CA/624FE871" Ref="SW?"  Part="1" 
+AR Path="/624C0657/624FE546/624FE871" Ref="SW?"  Part="1" 
+F 0 "SW?" H 3700 4485 50  0000 C CNN
+F 1 "SW_DPDT_x2" H 3700 4394 50  0000 C CNN
+F 2 "MixerFootprints:A-330-6mm-dpdt" H 3700 4200 50  0001 C CNN
+F 3 "~" H 3700 4200 50  0001 C CNN
+	1    3700 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_DPDT_x2 SW?
+U 2 1 624FE872
+P 3700 4700
+AR Path="/624FE872" Ref="SW?"  Part="2" 
+AR Path="/624C0657/624C3CB8/624FE872" Ref="SW?"  Part="2" 
+AR Path="/624C0657/624FE468/624FE872" Ref="SW?"  Part="2" 
+AR Path="/624C0657/624FE4CA/624FE872" Ref="SW?"  Part="2" 
+AR Path="/624C0657/624FE546/624FE872" Ref="SW?"  Part="2" 
+F 0 "SW?" H 3700 4985 50  0000 C CNN
+F 1 "SW_DPDT_x2" H 3700 4894 50  0000 C CNN
+F 2 "MixerFootprints:A-330-6mm-dpdt" H 3700 4700 50  0001 C CNN
+F 3 "~" H 3700 4700 50  0001 C CNN
+	2    3700 4700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 4100 4200 4100
+Wire Wire Line
+	4200 4100 4200 4250
+Wire Wire Line
+	10100 1750 9850 1750
+Text GLabel 10100 1750 2    50   Output ~ 0
+Level1
+Wire Wire Line
+	7400 1750 8150 1750
+$EndSCHEMATC

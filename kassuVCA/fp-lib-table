@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name MixerFootprints)(type KiCad)(uri ${KIPRJMOD}/MixerFootprints.pretty)(options "")(descr ""))
+)
