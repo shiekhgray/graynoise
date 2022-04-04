@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 4
+Sheet 3 5
 Title ""
 Date ""
 Rev ""
@@ -170,7 +170,7 @@ U 1 1 626AF2FC
 P 4200 1550
 F 0 "R302" V 4004 1550 50  0000 C CNN
 F 1 "39K" V 4095 1550 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 4200 1550 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" H 4200 1550 50  0001 C CNN
 F 3 "~" H 4200 1550 50  0001 C CNN
 	1    4200 1550
 	0    1    1    0   
@@ -190,7 +190,7 @@ U 1 1 626B0D66
 P 4800 1550
 F 0 "R303" V 4604 1550 50  0000 C CNN
 F 1 "2K" V 4695 1550 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 4800 1550 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" H 4800 1550 50  0001 C CNN
 F 3 "~" H 4800 1550 50  0001 C CNN
 	1    4800 1550
 	0    1    1    0   
@@ -232,7 +232,7 @@ U 1 1 626B43B8
 P 5900 1900
 F 0 "R305" V 5704 1900 50  0000 C CNN
 F 1 "100K" V 5795 1900 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 5900 1900 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" H 5900 1900 50  0001 C CNN
 F 3 "~" H 5900 1900 50  0001 C CNN
 	1    5900 1900
 	0    1    1    0   
@@ -252,7 +252,7 @@ U 1 1 626B7A07
 P 6500 1150
 F 0 "R308" V 6304 1150 50  0000 C CNN
 F 1 "1K" V 6395 1150 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 6500 1150 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" H 6500 1150 50  0001 C CNN
 F 3 "~" H 6500 1150 50  0001 C CNN
 	1    6500 1150
 	0    1    1    0   
@@ -288,7 +288,7 @@ U 1 1 626BA687
 P 4150 2750
 F 0 "R301" V 3954 2750 50  0000 C CNN
 F 1 "39K" V 4045 2750 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 4150 2750 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" H 4150 2750 50  0001 C CNN
 F 3 "~" H 4150 2750 50  0001 C CNN
 	1    4150 2750
 	0    1    1    0   
@@ -299,7 +299,7 @@ U 1 1 626BAAF1
 P 4800 2300
 F 0 "R304" V 4604 2300 50  0000 C CNN
 F 1 "2K" V 4695 2300 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 4800 2300 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" H 4800 2300 50  0001 C CNN
 F 3 "~" H 4800 2300 50  0001 C CNN
 	1    4800 2300
 	0    1    1    0   
@@ -348,7 +348,7 @@ U 1 1 626BFC8B
 P 5900 2750
 F 0 "R306" V 5704 2750 50  0000 C CNN
 F 1 "100K" V 5795 2750 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 5900 2750 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" H 5900 2750 50  0001 C CNN
 F 3 "~" H 5900 2750 50  0001 C CNN
 	1    5900 2750
 	0    1    1    0   
@@ -370,7 +370,7 @@ U 1 1 626C223E
 P 6450 2300
 F 0 "R307" V 6254 2300 50  0000 C CNN
 F 1 "1K" V 6345 2300 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" H 6450 2300 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" H 6450 2300 50  0001 C CNN
 F 3 "~" H 6450 2300 50  0001 C CNN
 	1    6450 2300
 	0    1    1    0   
@@ -461,9 +461,53 @@ Wire Wire Line
 Wire Wire Line
 	6600 1150 7100 1150
 Wire Wire Line
-	3050 950  3700 950 
+	3050 950  3200 950 
 Wire Wire Line
-	3400 1200 3400 2400
+	3400 1200 3400 2200
 Wire Wire Line
 	5900 1450 5900 1550
+Text GLabel 2600 1900 0    50   Output ~ 0
+Level3L
+Text GLabel 2600 2000 0    50   Output ~ 0
+Level4L
+Text GLabel 2600 2150 0    50   Output ~ 0
+Level3R
+Text GLabel 2600 2250 0    50   Output ~ 0
+Level4R
+Wire Wire Line
+	2600 1900 3050 1900
+Wire Wire Line
+	3050 2000 2600 2000
+Wire Wire Line
+	2600 2150 3050 2150
+Wire Wire Line
+	3050 2250 2600 2250
+$Sheet
+S 750  1800 1800 750 
+U 62865DD7
+F0 "sheet62865DD5" 50
+F1 "Channel1-2.sch" 50
+$EndSheet
+Wire Wire Line
+	3050 2150 3050 2200
+Wire Wire Line
+	3050 2000 3050 1950
+Wire Wire Line
+	3050 1950 3200 1950
+Wire Wire Line
+	3200 1950 3200 950 
+Connection ~ 3050 1950
+Wire Wire Line
+	3050 1950 3050 1900
+Connection ~ 3200 950 
+Wire Wire Line
+	3200 950  3700 950 
+Wire Wire Line
+	3050 2200 3400 2200
+Connection ~ 3050 2200
+Wire Wire Line
+	3050 2200 3050 2250
+Connection ~ 3400 2200
+Wire Wire Line
+	3400 2200 3400 2400
 $EndSCHEMATC
