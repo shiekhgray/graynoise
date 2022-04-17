@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 6
+Sheet 3 7
 Title ""
 Date ""
 Rev ""
@@ -552,4 +552,46 @@ Connection ~ 3050 3000
 Wire Wire Line
 	3050 3000 3050 3050
 Connection ~ 3200 1950
+Text GLabel 2600 4000 0    50   Output ~ 0
+Level7L
+Text GLabel 2600 4100 0    50   Output ~ 0
+Level8L
+Text GLabel 2600 4250 0    50   Output ~ 0
+Level7R
+Text GLabel 2600 4350 0    50   Output ~ 0
+Level8R
+Wire Wire Line
+	2600 4000 3050 4000
+Wire Wire Line
+	3050 4100 2600 4100
+Wire Wire Line
+	2600 4250 3050 4250
+Wire Wire Line
+	3050 4350 2600 4350
+$Sheet
+S 750  3900 1800 750 
+U 62792C39
+F0 "Channel7-8" 50
+F1 "Channel7-8.sch" 50
+$EndSheet
+Wire Wire Line
+	3050 4100 3050 4050
+Wire Wire Line
+	3050 4350 3050 4300
+Wire Wire Line
+	3050 4050 3200 4050
+Wire Wire Line
+	3200 4050 3200 3000
+Connection ~ 3050 4050
+Wire Wire Line
+	3050 4050 3050 4000
+Connection ~ 3200 3000
+Wire Wire Line
+	3050 4300 3400 4300
+Wire Wire Line
+	3400 4300 3400 3250
+Connection ~ 3050 4300
+Wire Wire Line
+	3050 4300 3050 4250
+Connection ~ 3400 3250
 $EndSCHEMATC
