@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 5
+Sheet 3 7
 Title ""
 Date ""
 Rev ""
@@ -485,7 +485,7 @@ Wire Wire Line
 $Sheet
 S 750  1800 1800 750 
 U 62865DD7
-F0 "sheet62865DD5" 50
+F0 "Channel3-4" 50
 F1 "Channel1-2.sch" 50
 $EndSheet
 Wire Wire Line
@@ -510,4 +510,68 @@ Wire Wire Line
 Connection ~ 3400 2200
 Wire Wire Line
 	3400 2200 3400 2400
+Text GLabel 2600 2950 0    50   Output ~ 0
+Level5L
+Text GLabel 2600 3050 0    50   Output ~ 0
+Level6L
+Text GLabel 2600 3200 0    50   Output ~ 0
+Level5R
+Text GLabel 2600 3300 0    50   Output ~ 0
+Level6R
+Wire Wire Line
+	2600 2950 3050 2950
+Wire Wire Line
+	3050 3050 2600 3050
+Wire Wire Line
+	2600 3200 3050 3200
+Wire Wire Line
+	3050 3300 2600 3300
+$Sheet
+S 750  2850 1800 750 
+U 625C0132
+F0 "Channel5-6" 50
+F1 "Channel5-6.sch" 50
+$EndSheet
+Wire Wire Line
+	3050 3200 3050 3250
+Wire Wire Line
+	3050 2950 3050 3000
+Wire Wire Line
+	3050 3250 3400 3250
+Wire Wire Line
+	3400 3250 3400 2400
+Connection ~ 3050 3250
+Wire Wire Line
+	3050 3250 3050 3300
+Connection ~ 3400 2400
+Wire Wire Line
+	3050 3000 3200 3000
+Wire Wire Line
+	3200 3000 3200 1950
+Connection ~ 3050 3000
+Wire Wire Line
+	3050 3000 3050 3050
+Connection ~ 3200 1950
+Text GLabel 2600 4000 0    50   Output ~ 0
+Level5L
+Text GLabel 2600 4100 0    50   Output ~ 0
+Level6L
+Text GLabel 2600 4250 0    50   Output ~ 0
+Level5R
+Text GLabel 2600 4350 0    50   Output ~ 0
+Level6R
+Wire Wire Line
+	2600 4000 3050 4000
+Wire Wire Line
+	3050 4100 2600 4100
+Wire Wire Line
+	2600 4250 3050 4250
+Wire Wire Line
+	3050 4350 2600 4350
+$Sheet
+S 750  3900 1800 750 
+U 62792C39
+F0 "Channel7-8" 50
+F1 "Channel7-8.sch" 50
+$EndSheet
 $EndSCHEMATC
