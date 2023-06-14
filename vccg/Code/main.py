@@ -90,7 +90,6 @@ while True:
     if displaySetting == 0:
         updateScreen = display.status.show(music)
     else:
-        #updateScreen = display.menu.show(['major', 'minor', 'dorian', 'phrygian', 'lydian', 'mixolydian', 'locrian'], 0)
         updateScreen = display.menu.show(menu,encoder.read() % len(menu.getTitles()))
     
     if select.value() == 1 and selectPrev == 0:

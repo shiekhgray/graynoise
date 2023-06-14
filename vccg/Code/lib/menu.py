@@ -59,6 +59,9 @@ class MenuScalar():
 
     def getValue(self):
         return self.value
+
+    def getSelection(self):
+        return self.value
     
     def getMax(self):
         return self.max
@@ -98,5 +101,3 @@ class MenuControl():
         
     def getParent(self):
         return self.parent
-
-#scale = MenuList(["Major", "Minor", "Harmonic Minor", "Natural Minor"])
